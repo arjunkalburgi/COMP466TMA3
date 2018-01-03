@@ -16,7 +16,7 @@ namespace part2.Models
             // get json
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.WebRootPath)
-                .AddJsonFile("lib/images.json"); 
+                .AddJsonFile("lib/images.txt"); 
             Configuration = builder.Build();
 
             // read json to array 
