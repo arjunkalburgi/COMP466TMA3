@@ -12,7 +12,7 @@ namespace part2.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return View(new slideshow());
         }
 
         public IActionResult About()
