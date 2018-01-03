@@ -1,3 +1,8 @@
+.img-responsive {
+    width: 100% !important;
+    height: -webkit-fill-available !important
+}
+
 body {
     /*padding-top: 50px;*/
     padding-bottom: 20px
