@@ -1,0 +1,69 @@
+var imageobj = [	
+	{
+		"src": "assets/slideshow/slideshow(0).jpg", 
+		"caption": "beginning of spring, snow melted but still looks gross",
+	},{
+		"src": "assets/slideshow/slideshow(1).jpg", 
+		"caption": "jumping on rocks in iceland",
+	},{
+		"src": "assets/slideshow/slideshow(2).jpg", 
+		"caption": "I think I lost those gloves in Iceland",
+	},{
+		"src": "assets/slideshow/slideshow(3).jpg", 
+		"caption": "testing my remote shooter camera feature",
+	},{
+		"src": "assets/slideshow/slideshow(4).jpg", 
+		"caption": "eyes closed next to vikings",
+	},{
+		"src": "assets/slideshow/slideshow(5).jpg", 
+		"caption": "freezing on the pier trying to take pictures",
+	},{
+		"src": "assets/slideshow/slideshow(6).jpg", 
+		"caption": "windy but beautiful Vestmannayar",
+	},{
+		"src": "assets/slideshow/slideshow(7).jpg", 
+		"caption": "downtown Rekjavik chilling",
+	},{
+		"src": "assets/slideshow/slideshow(8).jpg", 
+		"caption": "last photoshoot of iceland :(",
+	},{
+		"src": "assets/slideshow/slideshow(9).jpg", 
+		"caption": "testing different angles of my head for this shot",
+	},{
+		"src": "assets/slideshow/slideshow(10).jpg", 
+		"caption": "before the flight to iceland",
+	},{
+		"src": "assets/slideshow/slideshow(11).jpg", 
+		"caption": "first day in Iceland, taking pictures outside the kvistaland home",
+	},{
+		"src": "assets/slideshow/slideshow(12).jpg", 
+		"caption": "another hanging photo, these were so fun.",
+	},{
+		"src": "assets/slideshow/slideshow(13).jpg", 
+		"caption": "desperate for a shot and I loved the yellow fencing",
+	},{
+		"src": "assets/slideshow/slideshow(14).jpg", 
+		"caption": "lol at my hair but hey I'm standing on a volcano",
+	},{
+		"src": "assets/slideshow/slideshow(15).jpg", 
+		"caption": "the face of determination, I jumped off this little hill so many times",
+	},{
+		"src": "assets/slideshow/slideshow(16).jpg", 
+		"caption": "doing some viking poses",
+	},{
+		"src": "assets/slideshow/slideshow(17).jpg", 
+		"caption": "hair looking good as I walk through the bushes on campus",
+	},{
+		"src": "assets/slideshow/slideshow(18).jpg", 
+		"caption": "all smiles after that bollywood dance performance",
+	},{
+		"src": "assets/slideshow/slideshow(19).jpg", 
+		"caption": "first night in Vestmannayar, freezing again",
+	},{
+		"src": "assets/slideshow/slideshow(20).jpg", 
+		"caption": "nice little butt-flexing action as I hop onto the rock in time for the timer",
+	},{
+		"src": "assets/slideshow/slideshow(21).jpg", 
+		"caption": "a highwaisted pants kinda day",
+	}
+]
