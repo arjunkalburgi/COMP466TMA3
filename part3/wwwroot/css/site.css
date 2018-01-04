@@ -4,6 +4,10 @@
     margin-bottom: 15%; 
 }
 
+.row.product, .row.product .col {
+    padding: 10%; 
+}
+
 body {
     /*padding-top: 50px;*/
     padding-bottom: 20px

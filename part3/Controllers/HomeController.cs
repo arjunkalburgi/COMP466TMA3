@@ -21,6 +21,9 @@ namespace part3.Controllers
             ProductItem item = new ProductItem(name, Double.Parse(price), "lol holla");
 
             //make cookie
+            ViewData["name"] = name; 
+            ViewData["price"] = "$"+price;
+            ViewData["desc"] = item.description; 
 
             return View();
         }
