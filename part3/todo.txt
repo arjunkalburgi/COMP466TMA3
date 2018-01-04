@@ -2,8 +2,6 @@
 pages: contact + feedback form 
 
 select computer
-- object model 
-- new page
 - controller returns a new page 
 - show object info on page 
 

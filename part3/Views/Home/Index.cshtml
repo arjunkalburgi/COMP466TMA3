@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Home Page";
-}
+    }
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
@@ -71,21 +71,16 @@
 
 <div class="container body-content">
     <div class="row">
-        @using (Html.BeginForm())
-        {
-            <div class="col s6 m4 l2">
-              <button type="submit"  class="center promo promo-example">
+        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
+              <button type="submit" class="center promo promo-example">
                 <i class="material-icons large">flash_on</i>
                 <p class="promo-caption center">Computer 1</p>
                 <input type="hidden" name="name" value="Computer 1" />
                 <p class="light center">Price: $9.99</p>
                 <input type="hidden" name="price" value="9.99" />
               </button>
-            </div>
-        }
-        @using (Html.BeginForm())
-        {
-            <div class="col s6 m4 l2">
+        </form>
+        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
               <button class="center promo promo-example">
                 <i class="material-icons large">flash_on</i>
                 <p class="promo-caption center">RAM 1</p>
@@ -93,11 +88,8 @@
                 <p class="light center">Price: $9.99</p>
                 <input type="hidden" name="price" value="9.99" />
               </button>
-            </div>
-        }
-        @using (Html.BeginForm())
-        {
-            <div class="col s6 m4 l2">
+        </form>
+        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
               <button class="center promo promo-example">
                 <i class="material-icons large">group</i>
                 <p class="promo-caption center">hard drive 1</p>
@@ -105,11 +97,8 @@
                 <p class="light center">Price: $9.99</p>
                 <input type="hidden" name="price" value="9.99" />
               </button>
-            </div>
-        }
-        @using (Html.BeginForm())
-        {
-            <div class="col s6 m4 l2">
+        </form>
+        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
               <button class="center promo promo-example">
                 <i class="material-icons large">settings</i>
                 <p class="promo-caption center">CPU 1</p>
@@ -117,11 +106,8 @@
                 <p class="light center">Price: $9.99</p>
                 <input type="hidden" name="price" value="9.99" />
               </button>
-            </div>
-        }
-        @using (Html.BeginForm())
-        {
-            <div class="col s6 m4 l2">
+        </form>
+        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
               <button class="center promo promo-example">
                 <i class="material-icons large">flash_on</i>
                 <p class="promo-caption center">Monitor 1</p>
@@ -129,11 +115,8 @@
                 <p class="light center">Price: $9.99</p>
                 <input type="hidden" name="price" value="9.99" />
               </button>
-            </div>
-        }
-        @using (Html.BeginForm())
-        {
-            <div class="col s6 m4 l2">
+        </form>
+        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
               <button class="center promo promo-example">
                 <i class="material-icons large">group</i>
                 <p class="promo-caption center">OS 1</p>
@@ -141,11 +124,8 @@
                 <p class="light center">Price: $9.99</p>
                 <input type="hidden" name="price" value="9.99" />
               </button>
-            </div>
-        }
-        @using (Html.BeginForm())
-        {
-            <div class="col s6 m4 l2">
+        </form>
+        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
               <button class="center promo promo-example">
                 <i class="material-icons large">settings</i>
                 <p class="promo-caption center">soundcard 1</p>
@@ -153,11 +133,8 @@
                 <p class="light center">Price: $9.99</p>
                 <input type="hidden" name="price" value="9.99" />
               </button>
-            </div>
-        }
-        @using (Html.BeginForm())
-        {
-            <div class="col s6 m4 l2">
+        </form>
+        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
               <button class="center promo promo-example">
                 <i class="material-icons large">flash_on</i>
                 <p class="promo-caption center">RAM 2</p>
@@ -165,11 +142,8 @@
                 <p class="light center">Price: $9.99</p>
                 <input type="hidden" name="price" value="9.99" />
               </button>
-            </div>
-        }
-        @using (Html.BeginForm())
-        {
-            <div class="col s6 m4 l2">
+        </form>
+        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
               <button class="center promo promo-example">
                 <i class="material-icons large">group</i>
                 <p class="promo-caption center">hard drive 2</p>
@@ -177,11 +151,8 @@
                 <p class="light center">Price: $9.99</p>
                 <input type="hidden" name="price" value="9.99" />
               </button>
-            </div>
-        }
-        @using (Html.BeginForm())
-        {
-            <div class="col s6 m4 l2">
+        </form>
+        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
               <button class="center promo promo-example">
                 <i class="material-icons large">settings</i>
                 <p class="promo-caption center">CPU 2</p>
@@ -189,11 +160,8 @@
                 <p class="light center">Price: $9.99</p>
                 <input type="hidden" name="price" value="9.99" />
               </button>
-            </div>
-        }
-        @using (Html.BeginForm())
-        {
-            <div class="col s6 m4 l2">
+        </form>
+        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
               <button class="center promo promo-example">
                 <i class="material-icons large">flash_on</i>
                 <p class="promo-caption center">Monitor 2</p>
@@ -201,11 +169,8 @@
                 <p class="light center">Price: $9.99</p>
                 <input type="hidden" name="price" value="9.99" />
               </button>
-            </div>
-        }
-        @using (Html.BeginForm())
-        {
-            <div class="col s6 m4 l2">
+        </form>
+        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
               <button class="center promo promo-example">
                 <i class="material-icons large">group</i>
                 <p class="promo-caption center">OS 2</p>
@@ -213,11 +178,8 @@
                 <p class="light center">Price: $9.99</p>
                 <input type="hidden" name="price" value="9.99" />
               </button>
-            </div>
-        }
-        @using (Html.BeginForm())
-        {
-            <div class="col s6 m4 l2">
+        </form>
+        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
               <button class="center promo promo-example">
                 <i class="material-icons large">settings</i>
                 <p class="promo-caption center">soundcard 2</p>
@@ -225,7 +187,8 @@
                 <p class="light center">Price: $9.99</p>
                 <input type="hidden" name="price" value="9.99" />
               </button>
-            </div>
-        }
+        </form>
     </div>
 </div>
+
+}

@@ -16,11 +16,13 @@ namespace part3.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(string name, string price)
+        public ActionResult Productpage(string name, string price)
         {
             ProductItem item = new ProductItem(name, Double.Parse(price), "lol holla");
-            ViewData["item"] = item;
-            return Content($"Hello {name} for ${price}"); 
+
+            //make cookie
+
+            return View();
         }
 
         public IActionResult About()
