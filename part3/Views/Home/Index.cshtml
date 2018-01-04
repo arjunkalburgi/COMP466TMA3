@@ -1,4 +1,6 @@
-﻿@{
+﻿@model part3.Models.ProductItem
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -69,96 +71,161 @@
 
 <div class="container body-content">
     <div class="row">
-        <div class="col s6 m4 l2">
-          <div class="center promo promo-example">
-            <i class="material-icons">flash_on</i>
-            <p class="promo-caption">Computer 1</p>
-            <p class="light center">Price: $9.99</p>
-          </div>
-        </div>
-        <div class="col s6 m4 l2">
-          <div class="center promo promo-example">
-            <i class="material-icons">flash_on</i>
-            <p class="promo-caption">RAM 1</p>
-            <p class="light center">Price: $9.99</p>
-          </div>
-        </div>
-        <div class="col s6 m4 l2">
-          <div class="center promo promo-example">
-            <i class="material-icons">group</i>
-            <p class="promo-caption">hard drive 1</p>
-            <p class="light center">Price: $9.99</p>
-          </div>
-        </div>
-        <div class="col s6 m4 l2">
-          <div class="center promo promo-example">
-            <i class="material-icons">settings</i>
-            <p class="promo-caption">CPU 1</p>
-            <p class="light center">Price: $9.99</p>
-          </div>
-        </div>
-        <div class="col s6 m4 l2">
-          <div class="center promo promo-example">
-            <i class="material-icons">flash_on</i>
-            <p class="promo-caption">Monitor 1</p>
-            <p class="light center">Price: $9.99</p>
-          </div>
-        </div>
-        <div class="col s6 m4 l2">
-          <div class="center promo promo-example">
-            <i class="material-icons">group</i>
-            <p class="promo-caption">OS 1</p>
-            <p class="light center">Price: $9.99</p>
-          </div>
-        </div>
-        <div class="col s6 m4 l2">
-          <div class="center promo promo-example">
-            <i class="material-icons">settings</i>
-            <p class="promo-caption">soundcard 1</p>
-            <p class="light center">Price: $9.99</p>
-          </div>
-        </div>
-        <div class="col s6 m4 l2">
-          <div class="center promo promo-example">
-            <i class="material-icons">flash_on</i>
-            <p class="promo-caption">RAM 2</p>
-            <p class="light center">Price: $9.99</p>
-          </div>
-        </div>
-        <div class="col s6 m4 l2">
-          <div class="center promo promo-example">
-            <i class="material-icons">group</i>
-            <p class="promo-caption">hard drive 2</p>
-            <p class="light center">Price: $9.99</p>
-          </div>
-        </div>
-        <div class="col s6 m4 l2">
-          <div class="center promo promo-example">
-            <i class="material-icons">settings</i>
-            <p class="promo-caption">CPU 2</p>
-            <p class="light center">Price: $9.99</p>
-          </div>
-        </div>
-        <div class="col s6 m4 l2">
-          <div class="center promo promo-example">
-            <i class="material-icons">flash_on</i>
-            <p class="promo-caption">Monitor 2</p>
-            <p class="light center">Price: $9.99</p>
-          </div>
-        </div>
-        <div class="col s6 m4 l2">
-          <div class="center promo promo-example">
-            <i class="material-icons">group</i>
-            <p class="promo-caption">OS 2</p>
-            <p class="light center">Price: $9.99</p>
-          </div>
-        </div>
-        <div class="col s6 m4 l2">
-          <div class="center promo promo-example">
-            <i class="material-icons">settings</i>
-            <p class="promo-caption">soundcard 2</p>
-            <p class="light center">Price: $9.99</p>
-          </div>
-        </div>
+        @using (Html.BeginForm())
+        {
+            <div class="col s6 m4 l2">
+              <button type="submit"  class="center promo promo-example">
+                <i class="material-icons large">flash_on</i>
+                <p class="promo-caption center">Computer 1</p>
+                <input type="hidden" name="name" value="Computer 1" />
+                <p class="light center">Price: $9.99</p>
+                <input type="hidden" name="price" value="9.99" />
+              </button>
+            </div>
+        }
+        @using (Html.BeginForm())
+        {
+            <div class="col s6 m4 l2">
+              <button class="center promo promo-example">
+                <i class="material-icons large">flash_on</i>
+                <p class="promo-caption center">RAM 1</p>
+                <input type="hidden" name="name" value="RAM 1" />
+                <p class="light center">Price: $9.99</p>
+                <input type="hidden" name="price" value="9.99" />
+              </button>
+            </div>
+        }
+        @using (Html.BeginForm())
+        {
+            <div class="col s6 m4 l2">
+              <button class="center promo promo-example">
+                <i class="material-icons large">group</i>
+                <p class="promo-caption center">hard drive 1</p>
+                <input type="hidden" name="name" value="hard drive 1" />
+                <p class="light center">Price: $9.99</p>
+                <input type="hidden" name="price" value="9.99" />
+              </button>
+            </div>
+        }
+        @using (Html.BeginForm())
+        {
+            <div class="col s6 m4 l2">
+              <button class="center promo promo-example">
+                <i class="material-icons large">settings</i>
+                <p class="promo-caption center">CPU 1</p>
+                <input type="hidden" name="name" value="CPU 1" />
+                <p class="light center">Price: $9.99</p>
+                <input type="hidden" name="price" value="9.99" />
+              </button>
+            </div>
+        }
+        @using (Html.BeginForm())
+        {
+            <div class="col s6 m4 l2">
+              <button class="center promo promo-example">
+                <i class="material-icons large">flash_on</i>
+                <p class="promo-caption center">Monitor 1</p>
+                <input type="hidden" name="name" value="Monitor 1" />
+                <p class="light center">Price: $9.99</p>
+                <input type="hidden" name="price" value="9.99" />
+              </button>
+            </div>
+        }
+        @using (Html.BeginForm())
+        {
+            <div class="col s6 m4 l2">
+              <button class="center promo promo-example">
+                <i class="material-icons large">group</i>
+                <p class="promo-caption center">OS 1</p>
+                <input type="hidden" name="name" value="OS 1" />
+                <p class="light center">Price: $9.99</p>
+                <input type="hidden" name="price" value="9.99" />
+              </button>
+            </div>
+        }
+        @using (Html.BeginForm())
+        {
+            <div class="col s6 m4 l2">
+              <button class="center promo promo-example">
+                <i class="material-icons large">settings</i>
+                <p class="promo-caption center">soundcard 1</p>
+                <input type="hidden" name="name" value="soundcard 1" />
+                <p class="light center">Price: $9.99</p>
+                <input type="hidden" name="price" value="9.99" />
+              </button>
+            </div>
+        }
+        @using (Html.BeginForm())
+        {
+            <div class="col s6 m4 l2">
+              <button class="center promo promo-example">
+                <i class="material-icons large">flash_on</i>
+                <p class="promo-caption center">RAM 2</p>
+                <input type="hidden" name="name" value="RAM 2" />
+                <p class="light center">Price: $9.99</p>
+                <input type="hidden" name="price" value="9.99" />
+              </button>
+            </div>
+        }
+        @using (Html.BeginForm())
+        {
+            <div class="col s6 m4 l2">
+              <button class="center promo promo-example">
+                <i class="material-icons large">group</i>
+                <p class="promo-caption center">hard drive 2</p>
+                <input type="hidden" name="name" value="hard drive 2" />
+                <p class="light center">Price: $9.99</p>
+                <input type="hidden" name="price" value="9.99" />
+              </button>
+            </div>
+        }
+        @using (Html.BeginForm())
+        {
+            <div class="col s6 m4 l2">
+              <button class="center promo promo-example">
+                <i class="material-icons large">settings</i>
+                <p class="promo-caption center">CPU 2</p>
+                <input type="hidden" name="name" value="CPU 2" />
+                <p class="light center">Price: $9.99</p>
+                <input type="hidden" name="price" value="9.99" />
+              </button>
+            </div>
+        }
+        @using (Html.BeginForm())
+        {
+            <div class="col s6 m4 l2">
+              <button class="center promo promo-example">
+                <i class="material-icons large">flash_on</i>
+                <p class="promo-caption center">Monitor 2</p>
+                <input type="hidden" name="name" value="Monitor 2" />
+                <p class="light center">Price: $9.99</p>
+                <input type="hidden" name="price" value="9.99" />
+              </button>
+            </div>
+        }
+        @using (Html.BeginForm())
+        {
+            <div class="col s6 m4 l2">
+              <button class="center promo promo-example">
+                <i class="material-icons large">group</i>
+                <p class="promo-caption center">OS 2</p>
+                <input type="hidden" name="name" value="OS 2" />
+                <p class="light center">Price: $9.99</p>
+                <input type="hidden" name="price" value="9.99" />
+              </button>
+            </div>
+        }
+        @using (Html.BeginForm())
+        {
+            <div class="col s6 m4 l2">
+              <button class="center promo promo-example">
+                <i class="material-icons large">settings</i>
+                <p class="promo-caption center">soundcard 2</p>
+                <input type="hidden" name="name" value="soundcard 2" />
+                <p class="light center">Price: $9.99</p>
+                <input type="hidden" name="price" value="9.99" />
+              </button>
+            </div>
+        }
     </div>
 </div>

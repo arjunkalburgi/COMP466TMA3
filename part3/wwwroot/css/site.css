@@ -1,4 +1,10 @@
-﻿body {
+﻿form button {
+    border: none; 
+    width: 100%; 
+    margin-bottom: 15%; 
+}
+
+body {
     /*padding-top: 50px;*/
     padding-bottom: 20px
 }

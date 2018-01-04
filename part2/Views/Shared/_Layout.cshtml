@@ -27,7 +27,7 @@
         <div class="nav-wrapper container">
             <a id="logo-container" href="index.php" class="brand-logo center"><i class="material-icons">flash_on</i></a>
                 
-            <ul class="left hide-on-med-and-down">
+            <ul class="left">
                 <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                 <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                 <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
@@ -47,9 +47,41 @@
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2018 - part2</p>
+
+        <footer class="page-footer orange">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">This site uses</h5>
+                        <p class="grey-text text-lighten-4">MaterializeCSS for ...</p>
+
+                        <p>&copy; 2018 - part2</p>
+
+                    </div>
+                    <div class="col l3 s12">
+                        <h5 class="white-text">Links</h5>
+                        <ul>
+                            <li><a class="white-text" href="#!">Site</a></li>
+                            <li><a class="white-text" href="#!">Link 3</a></li>
+                            <li><a class="white-text" href="#!">Link 4</a></li>
+                        </ul>
+                    </div>
+                    <div class="col l3 s12">
+                        <h5 class="white-text">Connect</h5>
+                        <ul>
+                            <li><a class="white-text" href="#!">Link 1</a></li>
+                            <li><a class="white-text" href="#!">Link 2</a></li>
+                            <li><a class="white-text" href="#!">Link 3</a></li>
+                            <li><a class="white-text" href="#!">Link 4</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    Made by <a class="orange-text text-lighten-3" href="http://www.arjunkalburgi.com">Arjun</a>
+                </div>
+            </div>
         </footer>
     </div>
 

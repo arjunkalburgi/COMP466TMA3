@@ -1,7 +1,12 @@
 ﻿webstore design in the assignment report
-welcome page to greet customers, contact + feedback form 
-list of computers, list of different parts  RAM, hard drive, CPU, display, OS, and soundcard
+pages: contact + feedback form 
+
 select computer
+- object model 
+- new page
+- controller returns a new page 
+- show object info on page 
+
 edit components of a selected computer (using list of existing)
 when editted the price total needs to be dynamically changed and displayed to the customer
 cart page with summary 
