@@ -54,11 +54,11 @@ namespace part3.Models
         public string redodescription() {
             string desc = "This computer features ";
             desc += "the " + this.RAM.name + " RAM module, ";
-            desc += "the " + this.RAM.name + " HD, ";
-            desc += "the " + this.RAM.name + " CPU, ";
-            desc += "the " + this.RAM.name + " Display, ";
-            desc += "the " + this.RAM.name + " OS, ";
-            desc += "and the " + this.RAM.name + " SoundCard. ";
+            desc += "the " + this.HD.name + " HD, ";
+            desc += "the " + this.CPU.name + " CPU, ";
+            desc += "the " + this.Display.name + " Display, ";
+            desc += "the " + this.OS.name + " OS, ";
+            desc += "and the " + this.SoundCard.name + " SoundCard. ";
 
             this.description = desc;
             return desc; 
