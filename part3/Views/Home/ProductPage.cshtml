@@ -11,6 +11,11 @@
         <b>@item.name</b><br>
         <div class="chip">$@item.price</div>
         <p>@item.description</p>
+        @{
+            if (@ViewData["isComp"] != null) {
+                <button>Edit the Computer</button>
+            }
+        }
         <button>Add to ze Cart!!</button>
     </div>
 </div>

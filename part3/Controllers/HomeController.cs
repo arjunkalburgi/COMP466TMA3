@@ -22,13 +22,12 @@ namespace part3.Controllers
             ProductItem item; 
             if (name.Contains("Computer")) {
                 item = new ComputerItem(name, Double.Parse(price), "lol"); 
-                ViewData["isComp"] = true;
-                ViewData["item"] = item;
+                ViewData["isComp"] = "isComp";
             } else {
                 item = new ProductItem(name, Double.Parse(price), "lol holla");
-                ViewData["isComp"] = false;
-                ViewData["item"] = item; 
+                ViewData["isComp"] = null; 
             }
+            ViewData["item"] = item;
 
             return View();
         }
