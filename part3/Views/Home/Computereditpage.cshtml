@@ -1,0 +1,58 @@
+﻿@model part3.Models.ComputerItem
+
+@{
+    var item = ViewData["item"] as ComputerItem;
+    ViewData["Title"] = item.name + " Page";
+}
+
+<div class="row product">
+    <div class="col s3 image-side"><i class="material-icons large">flash_on</i></div>
+    <div class="col s9 content-side">
+        <b>@item.name</b><br>
+        <div class="chip">$@item.price</div>
+        <p>@item.description</p>
+        <button>Add to ze Cart!!</button>
+    </div>
+</div>
+<div class="container row editcomponents">
+    <ul class="collection with-header">
+        <li class="collection-header"><h4>First Names</h4></li>
+        <li class="collection-item avatar">
+            <i class="material-icons circle red">play_arrow</i>
+            <span class="title">@item.RAM.name</span>
+            <p>First Line</p>
+            <a href="#!" class="secondary-content"><i class="material-icons">edit</i></a>
+        </li>
+        <li class="collection-item avatar">
+            <i class="material-icons circle red">play_arrow</i>
+            <span class="title">@item.HD.name</span>
+            <p>First Line</p>
+            <a href="#!" class="secondary-content"><i class="material-icons">edit</i></a>
+        </li>
+        <li class="collection-item avatar">
+            <i class="material-icons circle red">play_arrow</i>
+            <span class="title">@item.CPU.name</span>
+            <p>First Line</p>
+            <a href="#!" class="secondary-content"><i class="material-icons">edit</i></a>
+        </li>
+        <li class="collection-item avatar">
+            <i class="material-icons circle red">play_arrow</i>
+            <span class="title">@item.OS.name</span>
+            <p>First Line</p>
+            <a href="#!" class="secondary-content"><i class="material-icons">edit</i></a>
+        </li>
+        <li class="collection-item avatar">
+            <i class="material-icons circle red">play_arrow</i>
+            <span class="title">@item.Display.name</span>
+            <p>First Line</p>
+            <a href="#!" class="secondary-content"><i class="material-icons">edit</i></a>
+        </li>
+        <li class="collection-item avatar">
+            <i class="material-icons circle red">play_arrow</i>
+            <span class="title">@item.SoundCard.name</span>
+            <p>First Line</p>
+            <a href="#!" class="secondary-content"><i class="material-icons">edit</i></a>
+        </li>
+    </ul>
+</div>
+<div class="row reviews"></div>

@@ -2,5 +2,14 @@
 pages: contact + feedback form 
 
 edit components of a selected computer (using list of existing)
+== drop downs for options with new prices and names. post back n reload. 
+== commit new changes into object, refresh page 
 when editted the price total needs to be dynamically changed and displayed to the customer
+
+
 cart page with summary 
+== cart page 
+== add to cart onclick
+== get all items in cart to page 
+== edit (comp only)/remove options
+== idk what else  

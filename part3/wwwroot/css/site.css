@@ -1,11 +1,11 @@
-﻿form button {
+﻿.productlist form button {
     border: none; 
     width: 100%; 
     margin-bottom: 15%; 
 }
 
 .row.product, .row.product .col {
-    padding: 10%; 
+    padding: 10%
 }
 
 body {

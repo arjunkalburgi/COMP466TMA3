@@ -3,6 +3,7 @@
 @{
     var item = ViewData["item"] as ProductItem;
     ViewData["Title"] = item.name + " Page";
+    var itemasstring = ViewData["itemasstring"]; 
 }
 
 <div class="row product">
@@ -13,7 +14,11 @@
         <p>@item.description</p>
         @{
             if (@ViewData["isComp"] != null) {
-                <button>Edit the Computer</button>
+                <form asp-controller="Home" asp-action="Computereditpage" class="col s6 m4 l2">
+                    <input type="hidden" name="name" value=@item.name />
+                    <input type="hidden" name="price" value=@item.price />
+                    <button type="submit">Edit the Computer</button>
+                </form>
             }
         }
         <button>Add to ze Cart!!</button>
