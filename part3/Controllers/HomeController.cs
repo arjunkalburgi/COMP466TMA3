@@ -18,12 +18,17 @@ namespace part3.Controllers
         [HttpPost]
         public ActionResult Productpage(string name, string price)
         {
-            ProductItem item = new ProductItem(name, Double.Parse(price), "lol holla");
 
-            //make cookie
-            ViewData["name"] = name; 
-            ViewData["price"] = "$"+price;
-            ViewData["desc"] = item.description; 
+            ProductItem item; 
+            if (name.Contains("Computer")) {
+                item = new ComputerItem(name, Double.Parse(price), "lol"); 
+                ViewData["isComp"] = true;
+                ViewData["item"] = item;
+            } else {
+                item = new ProductItem(name, Double.Parse(price), "lol holla");
+                ViewData["isComp"] = false;
+                ViewData["item"] = item; 
+            }
 
             return View();
         }

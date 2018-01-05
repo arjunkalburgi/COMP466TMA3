@@ -1,15 +1,16 @@
 ﻿@model part3.Models.ProductItem
 
 @{
-    ViewData["Title"] = "Page";
+    var item = ViewData["item"] as ProductItem;
+    ViewData["Title"] = item.name + " Page";
 }
 
 <div class="row product">
     <div class="col s3 image-side"><i class="material-icons large">flash_on</i></div>
     <div class="col s9 content-side">
-        <b>@ViewData["name"]</b><br>
-        <div class="chip">@ViewData["price"]</div>
-        <p>@ViewData["desc"]</p>
+        <b>@item.name</b><br>
+        <div class="chip">$@item.price</div>
+        <p>@item.description</p>
         <button>Add to ze Cart!!</button>
     </div>
 </div>
