@@ -19,9 +19,27 @@
                     <input type="hidden" name="price" value=@item.price />
                     <button type="submit">Edit the Computer</button>
                 </form>
+                <form asp-controller="Home" asp-action="AddComputerToCart">
+                    <input type="hidden" name="name" value=@item.name />
+                    <input type="hidden" name="price" value=@item.price />
+                    <input type="hidden" name="desc" value=@item.description />
+                    <input type="hidden" name="RAM" value=null) />
+                    <input type="hidden" name="HD" value=null />
+                    <input type="hidden" name="CPU" value=null />
+                    <input type="hidden" name="OS" value=null />
+                    <input type="hidden" name="Display" value=null />
+                    <input type="hidden" name="SoundCard" value=null />
+                    <button type="submit">Add @item.name to cart</button>
+                </form>
+            } else {
+                <form asp-controller="Home" asp-action="AddToCart">
+                    <input type="hidden" name="name" value=@item.name />
+                    <input type="hidden" name="price" value=@item.price />
+                    <input type="hidden" name="desc" value=@item.description />
+                    <button type="submit">Add @item.name to cart</button>
+                </form>
             }
         }
-        <button>Add to ze Cart!!</button>
     </div>
 </div>
 <div class="row reviews"></div>

@@ -11,7 +11,18 @@
         <b>@item.name</b><br>
         <div class="chip">$@item.price</div>
         <p>@item.description</p>
-        <button>Add to ze Cart!!</button>
+        <form asp-controller="Home" asp-action="AddComputerToCart">
+            <input type="hidden" name="name" value=@item.name />
+            <input type="hidden" name="price" value=@item.price />
+            <input type="hidden" name="desc" value=@item.description />
+            <input type="hidden" name="RAM" value=@item.RAM.ToString() />
+            <input type="hidden" name="HD" value=@item.HD.ToString() />
+            <input type="hidden" name="CPU" value=@item.CPU.ToString() />
+            <input type="hidden" name="OS" value=@item.OS.ToString() />
+            <input type="hidden" name="Display" value=@item.Display.ToString() />
+            <input type="hidden" name="SoundCard" value=@item.SoundCard.ToString() />
+            <button type="submit">Add @item.name to cart</button>
+        </form>
     </div>
 </div>
 <div class="container row editcomponents">

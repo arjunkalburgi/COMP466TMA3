@@ -74,6 +74,31 @@ namespace part3.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult AddToCart()
+        {
+            // add to cart obj
+
+            return View();
+        }
+
+        [HttpPost] 
+        public ActionResult AddComputerToCart(string name, string price, string description, string RAM, string HD, string CPU, string OS, string Display, string SoundCard) 
+        {
+            // rebuild computer
+            ComputerItem item = new ComputerItem(name, Double.Parse(price), description);
+            item.RAM = JsonConvert.DeserializeObject<ProductItem>(RAM); 
+            item.HD = JsonConvert.DeserializeObject<ProductItem>(HD); 
+            item.CPU = JsonConvert.DeserializeObject<ProductItem>(CPU); 
+            item.OS = JsonConvert.DeserializeObject<ProductItem>(OS); 
+            item.Display = JsonConvert.DeserializeObject<ProductItem>(Display); 
+            item.SoundCard= JsonConvert.DeserializeObject<ProductItem>(SoundCard); 
+
+            // add to cart obj
+
+            return View();
+        }
+
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";

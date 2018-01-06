@@ -2,8 +2,8 @@
 pages: contact + feedback form 
 
 cart page with summary 
-== cart page 
-== add to cart onclick
 == get all items in cart to page 
 == edit (comp only)/remove options
 == idk what else  
+
+explore removing computer from productpage (send computers right to computereditpage)
