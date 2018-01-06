@@ -14,7 +14,7 @@
         <p>@item.description</p>
         @{
             if (@ViewData["isComp"] != null) {
-                <form asp-controller="Home" asp-action="Computereditpage" class="col s6 m4 l2">
+                <form asp-controller="Home" asp-action="Computereditpage">
                     <input type="hidden" name="name" value=@item.name />
                     <input type="hidden" name="price" value=@item.price />
                     <button type="submit">Edit the Computer</button>

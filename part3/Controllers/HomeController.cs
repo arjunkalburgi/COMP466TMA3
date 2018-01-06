@@ -12,6 +12,12 @@ namespace part3.Controllers
 {
     public class HomeController : Controller
     {
+
+        //List<ProductItem> carteditems;
+        //List<ComputerItem> cartedcomps;
+
+        ComputerItem selectedcomp; 
+
         public IActionResult Index()
         {
             return View();
@@ -32,10 +38,10 @@ namespace part3.Controllers
             ViewData["item"] = item;
             ViewData["itemasstring"] = JsonConvert.SerializeObject(item); 
 
-            Response.Cookies.Delete("selecteditem"); 
-            CookieOptions selecteditemcookie = new CookieOptions();  
-            selecteditemcookie.Expires = DateTime.Now.AddMinutes(10);  
-            Response.Cookies.Append("selecteditem", JsonConvert.SerializeObject(item), selecteditemcookie);  
+            //Response.Cookies.Delete("selecteditem"); 
+            //CookieOptions selecteditemcookie = new CookieOptions();  
+            //selecteditemcookie.Expires = DateTime.Now.AddMinutes(10);  
+            //Response.Cookies.Append("selecteditem", JsonConvert.SerializeObject(item), selecteditemcookie);  
 
             return View();
         }
@@ -43,7 +49,26 @@ namespace part3.Controllers
         [HttpPost]
         public ActionResult Computereditpage(string name, string price)
         {
-            ComputerItem item = new ComputerItem(name, Double.Parse(price), "lol"); 
+            ComputerItem item = new ComputerItem(name, Double.Parse(price), "lol");
+            selectedcomp = item; 
+            ViewData["item"] = item;
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Computereditpage2(string name, string price, string description, string RAM, string HD, string CPU, string OS, string Display, string SoundCard, string componentname, string componentprice)
+        {
+            // rebuild computer
+            ComputerItem item = new ComputerItem(name, Double.Parse(price), description);
+            item.RAM = JsonConvert.DeserializeObject<ProductItem>(RAM); 
+            item.HD = JsonConvert.DeserializeObject<ProductItem>(HD); 
+            item.CPU = JsonConvert.DeserializeObject<ProductItem>(CPU); 
+            item.OS = JsonConvert.DeserializeObject<ProductItem>(OS); 
+            item.Display = JsonConvert.DeserializeObject<ProductItem>(Display); 
+            item.SoundCard= JsonConvert.DeserializeObject<ProductItem>(SoundCard); 
+
+            item.Newcomponent(componentname, Double.Parse(componentprice), "ugh descriptions");
             ViewData["item"] = item;
 
             return View();
