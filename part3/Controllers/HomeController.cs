@@ -13,11 +13,6 @@ namespace part3.Controllers
     public class HomeController : Controller
     {
 
-        //List<ProductItem> carteditems;
-        //List<ComputerItem> cartedcomps;
-
-        ComputerItem selectedcomp; 
-
         public IActionResult Index()
         {
             return View();
@@ -38,11 +33,6 @@ namespace part3.Controllers
             ViewData["item"] = item;
             ViewData["itemasstring"] = JsonConvert.SerializeObject(item); 
 
-            //Response.Cookies.Delete("selecteditem"); 
-            //CookieOptions selecteditemcookie = new CookieOptions();  
-            //selecteditemcookie.Expires = DateTime.Now.AddMinutes(10);  
-            //Response.Cookies.Append("selecteditem", JsonConvert.SerializeObject(item), selecteditemcookie);  
-
             return View();
         }
 
@@ -50,7 +40,6 @@ namespace part3.Controllers
         public ActionResult Computereditpage(string name, string price)
         {
             ComputerItem item = new ComputerItem(name, Double.Parse(price), "lol");
-            selectedcomp = item; 
             ViewData["item"] = item;
 
             return View();
@@ -75,9 +64,28 @@ namespace part3.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddToCart()
+        public ActionResult AddToCart(string name, string price, string description)
         {
+            ProductItem item = new ProductItem(name, Double.Parse(price), "lol holla");
+
+            // get selectedproductitems
+            List<ProductItem> items = new List<ProductItem>();
+            string itemsstring = Request.Cookies["selectedproductitems"];
+            if (itemsstring != null) {
+                items = JsonConvert.DeserializeObject<List<ProductItem>>(itemsstring);
+            }
+
             // add to cart obj
+            items.Add(item);
+
+            // store cookie
+            Response.Cookies.Delete("selectedproductitems"); 
+            CookieOptions selectedproductitems = new CookieOptions();  
+            selectedproductitems.Expires = DateTime.Now.AddMinutes(10);  
+            Response.Cookies.Append("selectedproductitems", JsonConvert.SerializeObject(items), selectedproductitems);  
+
+            // set view data
+            ViewData["productitems"] = items;
 
             return View();
         }
@@ -94,7 +102,30 @@ namespace part3.Controllers
             item.Display = JsonConvert.DeserializeObject<ProductItem>(Display); 
             item.SoundCard= JsonConvert.DeserializeObject<ProductItem>(SoundCard); 
 
+            // get selectedproductitems
+            List<ProductItem> items = new List<ProductItem>();
+            string itemsstring = Request.Cookies["selectedproductitems"];
+            if (itemsstring != null)
+            {
+                items = JsonConvert.DeserializeObject<List<ProductItem>>(itemsstring);
+            }
+
             // add to cart obj
+            items.Add(item.RAM);
+            items.Add(item.HD);
+            items.Add(item.CPU);
+            items.Add(item.OS);
+            items.Add(item.Display);
+            items.Add(item.SoundCard);
+
+            // store cookie
+            Response.Cookies.Delete("selectedproductitems");
+            CookieOptions selectedproductitems = new CookieOptions();
+            selectedproductitems.Expires = DateTime.Now.AddMinutes(10);
+            Response.Cookies.Append("selectedproductitems", JsonConvert.SerializeObject(items), selectedproductitems);
+
+            // set view data
+            ViewData["productitems"] = items;
 
             return View();
         }
