@@ -71,13 +71,21 @@
 
 <div class="container body-content">
     <div class="row productlist">
-        <form asp-controller="Home" asp-action="Computereditpage" class="col s6 m4 l2">
+        <form asp-controller="Home" asp-action="Computereditpage2" class="col s6 m4 l2">
               <button type="submit" class="center promo promo-example">
                 <i class="material-icons large">flash_on</i>
                 <p class="promo-caption center">Computer1</p>
                 <input type="hidden" name="name" value="Computer1" />
-                <p class="light center">Price: $9.99</p>
+                <p class="light center">Price: $59.99</p>
                 <input type="hidden" name="price" value="9.99" />
+                <input type="hidden" name="RAM" value=null />
+                <input type="hidden" name="HD" value=null />
+                <input type="hidden" name="CPU" value=null />
+                <input type="hidden" name="OS" value=null />
+                <input type="hidden" name="Display" value=null />
+                <input type="hidden" name="SoundCard" value=null />
+                <input type="hidden" name="componentname" value=null />
+                <input type="hidden" name="componentprice" value=null />
               </button>
         </form>
         <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">

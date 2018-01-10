@@ -1,8 +1,8 @@
 ﻿webstore design in the assignment report
 pages: contact + feedback form 
 
-cart page with summary 
-== edit (comp only)/remove options
-== idk what else  
+idk what else  
 
-remove computereditpage1
+images 
+description
+blanks 
