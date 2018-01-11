@@ -13,7 +13,7 @@ namespace part3.Models
         {
             this.name = name;
             this.price = price;
-            this.description = "thisIsAVNice-inator."; 
+            this.description = desc.Replace(" ", "**"); 
             //this.image = 
         }
 
@@ -34,12 +34,13 @@ namespace part3.Models
 
         public ComputerItem(string name, double price, string desc) : base(name, price, desc)
         {
-            this.RAM = new ProductItem("Ram1", 9.99, "ramlol"); 
-            this.HD = new ProductItem("HD1", 9.99, "ramlol"); 
-            this.CPU = new ProductItem("CPU1", 9.99, "ramlol"); 
-            this.Display = new ProductItem("Display1", 9.99, "ramlol"); 
-            this.OS = new ProductItem("OS1", 9.99, "ramlol"); 
-            this.SoundCard = new ProductItem("SoundCard1", 9.99, "ramol");
+            this.RAM = new ProductItem("Ram1", 9.99, "This is a first level ram"); 
+            this.HD = new ProductItem("HD1", 9.99, "This is a first level hd"); 
+            this.CPU = new ProductItem("CPU1", 9.99, "This is a first level cpu"); 
+            this.Display = new ProductItem("Display1", 9.99, "This is a first level monitor"); 
+            this.OS = new ProductItem("OS1", 9.99, "This is a first level os"); 
+            this.SoundCard = new ProductItem("SoundCard1", 9.99, "This is a first level sound card");
+
             calculateprice();
             redodescription();
         }
@@ -70,7 +71,7 @@ namespace part3.Models
             return desc; 
         }
 
-        public void Newcomponent(string name, double price, string description) {
+        public void Newcomponent(string name, double price) {
             if (name.Contains("RAM")) {
                 this.RAM = new ProductItem(name, price, "the better ram"); 
             } else if (name.Contains("HD")) {

@@ -11,7 +11,7 @@
     <div class="col s9 content-side">
         <b>@item.name</b><br>
         <div class="chip">$@item.price</div>
-        <p>@item.description</p>
+        <p>@item.description.Replace("**", " ")</p>
         @{
             if (@ViewData["isComp"] != null) {
                 <form asp-controller="Home" asp-action="Computereditpage">
@@ -22,7 +22,7 @@
                 <form asp-controller="Home" asp-action="AddComputerToCart">
                     <input type="hidden" name="name" value=@item.name />
                     <input type="hidden" name="price" value=@item.price />
-                    <input type="hidden" name="desc" value=@item.description />
+                    <input type="hidden" name="desc" value=@item.description.Replace("**", " ") />
                     <input type="hidden" name="RAM" value=null) />
                     <input type="hidden" name="HD" value=null />
                     <input type="hidden" name="CPU" value=null />
@@ -35,7 +35,7 @@
                 <form asp-controller="Home" asp-action="AddToCart">
                     <input type="hidden" name="name" value=@item.name />
                     <input type="hidden" name="price" value=@item.price />
-                    <input type="hidden" name="desc" value=@item.description />
+                    <input type="hidden" name="desc" value=@item.description.Replace("**", " ") />
                     <button type="submit">Add @item.name to cart</button>
                 </form>
             }

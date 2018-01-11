@@ -13,7 +13,7 @@
                 <li class="collection-item avatar">
                     <i class="material-icons circle red">play_arrow</i>
                     <span class="title">@item.name</span>
-                    <p>@item.price<br>@item.description</p>
+                    <p>@item.price<br>@item.description.Replace("**", " ")</p>
                     @{price+=item.price;}
                 </li>
             }

@@ -51,42 +51,42 @@ namespace part3.Controllers
             // build/rebuild computer
             ComputerItem item = new ComputerItem(name, Double.Parse(price), description);
             if (RAM is "null") {
-                item.RAM = new ProductItem("Ram1", 9.99, "this is rammmmm"); 
+                item.RAM = new ProductItem("Ram1", 9.99, "First level, default, rammmmm"); 
             } else {
                 item.RAM = JsonConvert.DeserializeObject<ProductItem>(RAM); 
             }
             if (HD is "null") {
-                item.HD = new ProductItem("HD1", 9.99, "this is HD");
+                item.HD = new ProductItem("HD1", 9.99, "First level, default, HD");
             } else {
                 item.HD = JsonConvert.DeserializeObject<ProductItem>(HD);
             }
             if (CPU is "null") {
-                item.CPU = new ProductItem("CPU1", 9.99, "this is CPU");
+                item.CPU = new ProductItem("CPU1", 9.99, "First level, default, CPU");
             } else {
                 item.CPU = JsonConvert.DeserializeObject<ProductItem>(CPU); 
             }
             if (OS is "null") {
-                item.OS = new ProductItem("OS1", 9.99, "this is OS");
+                item.OS = new ProductItem("OS1", 9.99, "First level, default, OS");
             } else {
                 item.OS = JsonConvert.DeserializeObject<ProductItem>(OS); 
             }
             if (Display is "null") {
-                item.Display = new ProductItem("Display1", 9.99, "this is Dissplay");
+                item.Display = new ProductItem("Display1", 9.99, "First level, default, Dissplay");
             } else {
                 item.Display = JsonConvert.DeserializeObject<ProductItem>(Display); 
             }
             if (Display is "null") {
-                item.Display = new ProductItem("Display1", 9.99, "this is Dissplay");
+                item.Display = new ProductItem("Display1", 9.99, "First level, default, Dissplay");
             } else {
                 item.Display = JsonConvert.DeserializeObject<ProductItem>(Display); 
             }
             if (SoundCard is "null") {
-                item.SoundCard = new ProductItem("Soundcard1", 9.99, "this is soundcard"); 
+                item.SoundCard = new ProductItem("Soundcard1", 9.99, "First level, default, soundcard"); 
             } else {
                 item.SoundCard= JsonConvert.DeserializeObject<ProductItem>(SoundCard); 
             }
             if (componentname != "null" && componentprice != "null") {
-                item.Newcomponent(componentname, Double.Parse(componentprice), "ugh descriptions");
+                item.Newcomponent(componentname, Double.Parse(componentprice));
             }
 
             ViewData["item"] = item;
