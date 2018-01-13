@@ -1,10 +1,23 @@
-﻿.productlist form button {
+﻿.productlist .gridimage {
+    max-width: -webkit-fill-available;
+    height: 200px
+}
+
+.image-side .gridimage {
+    max-width: -webkit-fill-available    
+}
+
+.productlist form button {
     border: none; 
     width: 100%; 
     margin-bottom: 15%; 
 }
 
-.row.product, .row.product .col {
+.image-side {
+    padding-top: 60px !important; 
+}
+
+.row.product, .row.product .col:not(.image-side) {
     padding: 10%
 }
 

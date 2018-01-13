@@ -19,69 +19,47 @@ namespace part3.Controllers
         }
 
         [HttpPost]
-        public ActionResult Productpage(string name, string price)
+        public ActionResult Productpage(string name, string price, string img)
         {
 
-            ProductItem item = new ProductItem(name, Double.Parse(price), "lol holla"); 
-            if (name.Contains("Computer")) {
-                ViewData["isComp"] = "isComp";
-
-            } else {
-                ViewData["isComp"] = null; 
-
-            }
-            ViewData["item"] = item;
-            ViewData["itemasstring"] = JsonConvert.SerializeObject(item); 
-
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Computereditpage(string name, string price)
-        {
-            ComputerItem item = new ComputerItem(name, Double.Parse(price), "lol");
+            ProductItem item = new ProductItem(name, Double.Parse(price), "description needed", img); 
             ViewData["item"] = item;
 
             return View();
         }
 
         [HttpPost]
-        public ActionResult Computereditpage2(string name, string price, string description, string RAM, string HD, string CPU, string OS, string Display, string SoundCard, string componentname, string componentprice)
+        public ActionResult Computereditpage2(string name, string price, string description, string img, string RAM, string HD, string CPU, string OS, string Display, string SoundCard, string componentname, string componentprice)
         {
             // build/rebuild computer
-            ComputerItem item = new ComputerItem(name, Double.Parse(price), description);
+            ComputerItem item = new ComputerItem(name, Double.Parse(price), description, img);
             if (RAM is "null") {
-                item.RAM = new ProductItem("Ram1", 9.99, "First level, default, rammmmm"); 
+                item.RAM = new ProductItem("Ram1", 9.99, "First level, default, rammmmm", "/images/ram.jpg"); 
             } else {
                 item.RAM = JsonConvert.DeserializeObject<ProductItem>(RAM); 
             }
             if (HD is "null") {
-                item.HD = new ProductItem("HD1", 9.99, "First level, default, HD");
+                item.HD = new ProductItem("HD1", 9.99, "First level, default, HD", "/images/hd.jpg");
             } else {
                 item.HD = JsonConvert.DeserializeObject<ProductItem>(HD);
             }
             if (CPU is "null") {
-                item.CPU = new ProductItem("CPU1", 9.99, "First level, default, CPU");
+                item.CPU = new ProductItem("CPU1", 9.99, "First level, default, CPU", "/images/cpu.jpg");
             } else {
                 item.CPU = JsonConvert.DeserializeObject<ProductItem>(CPU); 
             }
             if (OS is "null") {
-                item.OS = new ProductItem("OS1", 9.99, "First level, default, OS");
+                item.OS = new ProductItem("OS1", 9.99, "First level, default, OS", "/images/display.jpg");
             } else {
                 item.OS = JsonConvert.DeserializeObject<ProductItem>(OS); 
             }
             if (Display is "null") {
-                item.Display = new ProductItem("Display1", 9.99, "First level, default, Dissplay");
-            } else {
-                item.Display = JsonConvert.DeserializeObject<ProductItem>(Display); 
-            }
-            if (Display is "null") {
-                item.Display = new ProductItem("Display1", 9.99, "First level, default, Dissplay");
+                item.Display = new ProductItem("Display1", 9.99, "First level, default, Display", "/images/os.png");
             } else {
                 item.Display = JsonConvert.DeserializeObject<ProductItem>(Display); 
             }
             if (SoundCard is "null") {
-                item.SoundCard = new ProductItem("Soundcard1", 9.99, "First level, default, soundcard"); 
+                item.SoundCard = new ProductItem("Soundcard1", 9.99, "First level, default, soundcard", "/images/scard.jpg"); 
             } else {
                 item.SoundCard= JsonConvert.DeserializeObject<ProductItem>(SoundCard); 
             }
@@ -95,9 +73,9 @@ namespace part3.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddToCart(string name, string price, string description)
+        public ActionResult AddToCart(string name, string price, string description, string img)
         {
-            ProductItem item = new ProductItem(name, Double.Parse(price), "lol holla");
+            ProductItem item = new ProductItem(name, Double.Parse(price), description, img);
 
             // get selectedproductitems
             List<ProductItem> items = new List<ProductItem>();
@@ -122,10 +100,10 @@ namespace part3.Controllers
         }
 
         [HttpPost] 
-        public ActionResult AddComputerToCart(string name, string price, string description, string RAM, string HD, string CPU, string OS, string Display, string SoundCard) 
+        public ActionResult AddComputerToCart(string name, string price, string description, string img, string RAM, string HD, string CPU, string OS, string Display, string SoundCard) 
         {
             // rebuild computer
-            ComputerItem item = new ComputerItem(name, Double.Parse(price), description);
+            ComputerItem item = new ComputerItem(name, Double.Parse(price), description, img);
             item.RAM = JsonConvert.DeserializeObject<ProductItem>(RAM); 
             item.HD = JsonConvert.DeserializeObject<ProductItem>(HD); 
             item.CPU = JsonConvert.DeserializeObject<ProductItem>(CPU); 

@@ -7,39 +7,18 @@
 }
 
 <div class="row product">
-    <div class="col s3 image-side"><i class="material-icons large">flash_on</i></div>
+    <div class="col s3 image-side"><img src="@item.image" class="gridimage" /></div>
     <div class="col s9 content-side">
         <b>@item.name</b><br>
         <div class="chip">$@item.price</div>
         <p>@item.description.Replace("**", " ")</p>
-        @{
-            if (@ViewData["isComp"] != null) {
-                <form asp-controller="Home" asp-action="Computereditpage">
-                    <input type="hidden" name="name" value=@item.name />
-                    <input type="hidden" name="price" value=@item.price />
-                    <button type="submit">Edit the Computer</button>
-                </form>
-                <form asp-controller="Home" asp-action="AddComputerToCart">
-                    <input type="hidden" name="name" value=@item.name />
-                    <input type="hidden" name="price" value=@item.price />
-                    <input type="hidden" name="desc" value=@item.description.Replace("**", " ") />
-                    <input type="hidden" name="RAM" value=null) />
-                    <input type="hidden" name="HD" value=null />
-                    <input type="hidden" name="CPU" value=null />
-                    <input type="hidden" name="OS" value=null />
-                    <input type="hidden" name="Display" value=null />
-                    <input type="hidden" name="SoundCard" value=null />
-                    <button type="submit">Add @item.name to cart</button>
-                </form>
-            } else {
-                <form asp-controller="Home" asp-action="AddToCart">
-                    <input type="hidden" name="name" value=@item.name />
-                    <input type="hidden" name="price" value=@item.price />
-                    <input type="hidden" name="desc" value=@item.description.Replace("**", " ") />
-                    <button type="submit">Add @item.name to cart</button>
-                </form>
-            }
-        }
+        <form asp-controller="Home" asp-action="AddToCart">
+            <input type="hidden" name="name" value="@item.name" />
+            <input type="hidden" name="price" value="@item.price" />
+            <input type="hidden" name="img" value="@item.image" />
+            <input type="hidden" name="description" value="@item.description.Replace("**", " ")" />
+            <button type="submit">Add @item.name to cart</button>
+        </form>
     </div>
 </div>
 <div class="row reviews"></div>
