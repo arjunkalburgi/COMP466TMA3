@@ -3,6 +3,3 @@ pages: contact + feedback form
 
 idk what else  
 
-images - on cart, computereditpage2, 
-error on 
-blanks 
