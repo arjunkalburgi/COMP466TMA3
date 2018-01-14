@@ -1,0 +1,24 @@
+﻿@model part4.Models.ProductItem
+
+@{
+    var item = ViewData["item"] as ProductItem;
+    ViewData["Title"] = item.name + " Page";
+    var itemasstring = ViewData["itemasstring"]; 
+}
+
+<div class="row product">
+    <div class="col s3 image-side"><img src="@item.image" class="gridimage" /></div>
+    <div class="col s9 content-side">
+        <b>@item.name</b><br>
+        <div class="chip">$@item.price</div>
+        <p>@item.description.Replace("**", " ")</p>
+        <form asp-controller="Home" asp-action="AddToCart">
+            <input type="hidden" name="name" value="@item.name" />
+            <input type="hidden" name="price" value="@item.price" />
+            <input type="hidden" name="img" value="@item.image" />
+            <input type="hidden" name="description" value="@item.description.Replace("**", " ")" />
+            <button type="submit">Add @item.name to cart</button>
+        </form>
+    </div>
+</div>
+<div class="row reviews"></div>
