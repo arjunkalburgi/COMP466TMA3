@@ -1,16 +1,31 @@
 ﻿using System;
 using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations; 
+
 namespace part4.Models
 {
     public class ProductItem
     {
-        public string name { get;  }
+        public Guid id { get; set; }
+
+        [MaxLength(50)]
+        [Required]
+        public string name { get; set; }
+
+        [Required]
         public double price { get; set; }
+
+        [MaxLength(700)]
+        [Required]
         public string description { get; set; }
-        public string image { get; }
+
+        [MaxLength(100)]
+        [Required]
+        public string image { get; set; }
 
         public ProductItem(string name, double price, string description, string img)
         {
+            this.id = Guid.NewGuid(); 
             this.name = name;
             this.price = price;
             this.description = description.Replace(" ", "**");

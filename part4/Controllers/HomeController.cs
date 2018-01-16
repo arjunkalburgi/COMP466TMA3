@@ -7,11 +7,17 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using part4.Models;
 using Newtonsoft.Json;
+using part4.Contexts;
 
 namespace part4.Controllers
 {
     public class HomeController : Controller
     {
+        public ProductContext context;
+
+        public HomeController(ProductContext context) {
+            this.context = context; 
+        }
 
         public IActionResult Index()
         {
@@ -19,10 +25,12 @@ namespace part4.Controllers
         }
 
         [HttpPost]
-        public ActionResult Productpage(string name, string price, string img)
+        public async Task<ActionResult> Productpage(string name, string price, string img)
         {
+            ProductItem item = new ProductItem(name, Double.Parse(price), "description needed", img);
+            context.Products.Add(item); 
+            await context.SaveChangesAsync();
 
-            ProductItem item = new ProductItem(name, Double.Parse(price), "description needed", img); 
             ViewData["item"] = item;
 
             return View();
@@ -33,34 +41,22 @@ namespace part4.Controllers
         {
             // build/rebuild computer
             ComputerItem item = new ComputerItem(name, Double.Parse(price), description, img);
-            if (RAM is "null") {
-                item.RAM = new ProductItem("Ram1", 9.99, "First level, default, rammmmm", "/images/ram.jpg"); 
-            } else {
+            if (RAM != "null") {
                 item.RAM = JsonConvert.DeserializeObject<ProductItem>(RAM); 
             }
-            if (HD is "null") {
-                item.HD = new ProductItem("HD1", 9.99, "First level, default, HD", "/images/hd.jpg");
-            } else {
+            if (HD != "null") {
                 item.HD = JsonConvert.DeserializeObject<ProductItem>(HD);
             }
-            if (CPU is "null") {
-                item.CPU = new ProductItem("CPU1", 9.99, "First level, default, CPU", "/images/cpu.jpg");
-            } else {
+            if (CPU != "null") {
                 item.CPU = JsonConvert.DeserializeObject<ProductItem>(CPU); 
             }
-            if (OS is "null") {
-                item.OS = new ProductItem("OS1", 9.99, "First level, default, OS", "/images/display.jpg");
-            } else {
+            if (OS != "null") {
                 item.OS = JsonConvert.DeserializeObject<ProductItem>(OS); 
             }
-            if (Display is "null") {
-                item.Display = new ProductItem("Display1", 9.99, "First level, default, Display", "/images/os.png");
-            } else {
+            if (Display != "null") {
                 item.Display = JsonConvert.DeserializeObject<ProductItem>(Display); 
             }
-            if (SoundCard is "null") {
-                item.SoundCard = new ProductItem("Soundcard1", 9.99, "First level, default, soundcard", "/images/scard.jpg"); 
-            } else {
+            if (SoundCard != "null") {
                 item.SoundCard= JsonConvert.DeserializeObject<ProductItem>(SoundCard); 
             }
             if (componentname != "null" && componentprice != "null") {
