@@ -1,8 +1,9 @@
-﻿@model part4.Models.ProductItem
+﻿@model part4.ViewModels.ProductsList
 
 @{
     ViewData["Title"] = "Home Page";
-    }
+    var products = ViewData["ProductsList"] as ProductsList;
+}
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
@@ -72,127 +73,19 @@
                 <input type="hidden" name="componentprice" value=null />
               </button>
         </form>
-        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
-              <button class="center promo promo-example">
-                <img class="gridimage" src="~/images/ram.jpg"/>
-                <input type="hidden" name="img" value="/images/ram.jpg" />
-                <p class="promo-caption center">RAM1</p>
-                <input type="hidden" name="name" value="First level ram" />
-                <p class="light center">Price: $9.99</p>
-                <input type="hidden" name="price" value="9.99" />
-              </button>
-        </form>
-        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
-              <button class="center promo promo-example">
-                <img class="gridimage" src="~/images/hd.jpg"/>
-                <input type="hidden" name="img" value="/images/hd.jpg" />
-                <p class="promo-caption center">hard drive1</p>
-                <input type="hidden" name="name" value="First level hard drive" />
-                <p class="light center">Price: $9.99</p>
-                <input type="hidden" name="price" value="9.99" />
-              </button>
-        </form>
-        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
-              <button class="center promo promo-example">
-                <img class="gridimage" src="~/images/cpu.jpg"/>
-                <input type="hidden" name="img" value="/images/cpu.jpg" />
-                <p class="promo-caption center">CPU1</p>
-                <input type="hidden" name="name" value="First level CPU" />
-                <p class="light center">Price: $9.99</p>
-                <input type="hidden" name="price" value="9.99" />
-              </button>
-        </form>
-        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
-              <button class="center promo promo-example">
-                <img class="gridimage" src="~/images/display.jpg"/>
-                <input type="hidden" name="img" value="/images/display.jpg" />
-                <p class="promo-caption center">Monitor1</p>
-                <input type="hidden" name="name" value="First level monitor" />
-                <p class="light center">Price: $9.99</p>
-                <input type="hidden" name="price" value="9.99" />
-              </button>
-        </form>
-        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
-              <button class="center promo promo-example">
-                <img class="gridimage" src="~/images/os.png"/>
-                <input type="hidden" name="img" value="/images/os.png" />
-                <p class="promo-caption center">OS1</p>
-                <input type="hidden" name="name" value="First level OS" />
-                <p class="light center">Price: $9.99</p>
-                <input type="hidden" name="price" value="9.99" />
-              </button>
-        </form>
-        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
-              <button class="center promo promo-example">
-                <img class="gridimage" src="~/images/scard.jpg"/>
-                <input type="hidden" name="img" value="/images/scard.jpg" />
-                <p class="promo-caption center">soundcard1</p>
-                <input type="hidden" name="name" value="First level sound card" />
-                <p class="light center">Price: $9.99</p>
-                <input type="hidden" name="price" value="9.99" />
-              </button>
-        </form>
-        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
-              <button class="center promo promo-example">
-                <img class="gridimage" src="~/images/ram.jpg"/>
-                <input type="hidden" name="img" value="/images/ram.jpg" />
-                <p class="promo-caption center">RAM 2</p>
-                <input type="hidden" name="name" value="Second level ram" />
-                <p class="light center">Price: $10.99</p>
-                <input type="hidden" name="price" value="10.99" />
-              </button>
-        </form>
-        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
-              <button class="center promo promo-example">
-                <img class="gridimage" src="~/images/hd.jpg"/>
-                <input type="hidden" name="img" value="/images/hd.jpg" />
-                <p class="promo-caption center">hard drive 2</p>
-                <input type="hidden" name="name" value="Second level hard drive" />
-                <p class="light center">Price: $10.99</p>
-                <input type="hidden" name="price" value="10.99" />
-              </button>
-        </form>
-        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
-              <button class="center promo promo-example">
-                <img class="gridimage" src="~/images/cpu.jpg"/>
-                <input type="hidden" name="img" value="/images/cpu.jpg" />
-                <p class="promo-caption center">CPU 2</p>
-                <input type="hidden" name="name" value="Second level CPU" />
-                <p class="light center">Price: $10.99</p>
-                <input type="hidden" name="price" value="10.99" />
-              </button>
-        </form>
-        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
-              <button class="center promo promo-example">
-                <img class="gridimage" src="~/images/display.jpg"/>
-                <input type="hidden" name="img" value="/images/display.jpg" />
-                <p class="promo-caption center">Monitor 2</p>
-                <input type="hidden" name="name" value="Second level Monitor" />
-                <p class="light center">Price: $10.99</p>
-                <input type="hidden" name="price" value="10.99" />
-              </button>
-        </form>
-        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
-              <button class="center promo promo-example">
-                <img class="gridimage" src="~/images/os.png"/>
-                <input type="hidden" name="img" value="/images/os.png" />
-                <p class="promo-caption center">OS 2</p>
-                <input type="hidden" name="name" value="Second level OS" />
-                <p class="light center">Price: $10.99</p>
-                <input type="hidden" name="price" value="10.99" />
-              </button>
-        </form>
-        <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
-              <button class="center promo promo-example">
-                <img class="gridimage" src="~/images/scard.jpg"/>
-                <input type="hidden" name="img" value="/images/scard.jpg" />
-                <p class="promo-caption center">soundcard 2</p>
-                <input type="hidden" name="name" value="Second level soundcard" />
-                <p class="light center">Price: $10.99</p>
-                <input type="hidden" name="price" value="10.99" />
-              </button>
-        </form>
+        @foreach(var product in products.Products) {
+
+            <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
+                  <button class="center promo promo-example">
+                    <img class="gridimage" src="@product.image"/>
+                    <input type="hidden" name="img" value="@product.image" />
+                    <p class="promo-caption center">@product.name</p>
+                    <input type="hidden" name="name" value="@product.name" />
+                    <p class="light center">Price: $@product.price</p>
+                    <input type="hidden" name="price" value="@product.price" />
+                  </button>
+            </form>
+
+        }
     </div>
 </div>
-
-}

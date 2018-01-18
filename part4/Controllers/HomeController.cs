@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using part4.Models;
 using Newtonsoft.Json;
 using part4.Contexts;
+using part4.ViewModels;
 
 namespace part4.Controllers
 {
@@ -21,17 +22,23 @@ namespace part4.Controllers
 
         public IActionResult Index()
         {
+            ViewData["ProductsList"] = new ProductsList()
+            {
+                Products = context.Products.ToList() 
+            };
+
             return View();
         }
 
         [HttpPost]
         public async Task<ActionResult> Productpage(string name, string price, string img)
         {
-            ProductItem item = new ProductItem(name, Double.Parse(price), "description needed", img);
-            context.Products.Add(item); 
+            //ProductItem item = new ProductItem(name, Double.Parse(price), "description needed", img);
+            //context.Products.Add(item); 
+            //context.Find();
             await context.SaveChangesAsync();
 
-            ViewData["item"] = item;
+            //ViewData["item"] = item;
 
             return View();
         }
@@ -39,31 +46,31 @@ namespace part4.Controllers
         [HttpPost]
         public ActionResult Computereditpage2(string name, string price, string description, string img, string RAM, string HD, string CPU, string OS, string Display, string SoundCard, string componentname, string componentprice)
         {
-            // build/rebuild computer
-            ComputerItem item = new ComputerItem(name, Double.Parse(price), description, img);
-            if (RAM != "null") {
-                item.RAM = JsonConvert.DeserializeObject<ProductItem>(RAM); 
-            }
-            if (HD != "null") {
-                item.HD = JsonConvert.DeserializeObject<ProductItem>(HD);
-            }
-            if (CPU != "null") {
-                item.CPU = JsonConvert.DeserializeObject<ProductItem>(CPU); 
-            }
-            if (OS != "null") {
-                item.OS = JsonConvert.DeserializeObject<ProductItem>(OS); 
-            }
-            if (Display != "null") {
-                item.Display = JsonConvert.DeserializeObject<ProductItem>(Display); 
-            }
-            if (SoundCard != "null") {
-                item.SoundCard= JsonConvert.DeserializeObject<ProductItem>(SoundCard); 
-            }
-            if (componentname != "null" && componentprice != "null") {
-                item.Newcomponent(componentname, Double.Parse(componentprice));
-            }
+            //// build/rebuild computer
+            //ComputerItem item = new ComputerItem(name, Double.Parse(price), description, img);
+            //if (RAM != "null") {
+            //    item.RAM = JsonConvert.DeserializeObject<ProductItem>(RAM); 
+            //}
+            //if (HD != "null") {
+            //    item.HD = JsonConvert.DeserializeObject<ProductItem>(HD);
+            //}
+            //if (CPU != "null") {
+            //    item.CPU = JsonConvert.DeserializeObject<ProductItem>(CPU); 
+            //}
+            //if (OS != "null") {
+            //    item.OS = JsonConvert.DeserializeObject<ProductItem>(OS); 
+            //}
+            //if (Display != "null") {
+            //    item.Display = JsonConvert.DeserializeObject<ProductItem>(Display); 
+            //}
+            //if (SoundCard != "null") {
+            //    item.SoundCard= JsonConvert.DeserializeObject<ProductItem>(SoundCard); 
+            //}
+            //if (componentname != "null" && componentprice != "null") {
+            //    item.Newcomponent(componentname, Double.Parse(componentprice));
+            //}
 
-            ViewData["item"] = item;
+            //ViewData["item"] = item;
 
             return View();
         }
@@ -71,26 +78,26 @@ namespace part4.Controllers
         [HttpPost]
         public ActionResult AddToCart(string name, string price, string description, string img)
         {
-            ProductItem item = new ProductItem(name, Double.Parse(price), description, img);
+            //ProductItem item = new ProductItem(name, Double.Parse(price), description, img);
 
-            // get selectedproductitems
-            List<ProductItem> items = new List<ProductItem>();
-            string itemsstring = Request.Cookies["selectedproductitems"];
-            if (itemsstring != null) {
-                items = JsonConvert.DeserializeObject<List<ProductItem>>(itemsstring);
-            }
+            //// get selectedproductitems
+            //List<ProductItem> items = new List<ProductItem>();
+            //string itemsstring = Request.Cookies["selectedproductitems"];
+            //if (itemsstring != null) {
+            //    items = JsonConvert.DeserializeObject<List<ProductItem>>(itemsstring);
+            //}
 
-            // add to cart obj
-            items.Add(item);
+            //// add to cart obj
+            //items.Add(item);
 
-            // store cookie
-            Response.Cookies.Delete("selectedproductitems"); 
-            CookieOptions selectedproductitems = new CookieOptions();  
-            selectedproductitems.Expires = DateTime.Now.AddMinutes(10);  
-            Response.Cookies.Append("selectedproductitems", JsonConvert.SerializeObject(items), selectedproductitems);  
+            //// store cookie
+            //Response.Cookies.Delete("selectedproductitems"); 
+            //CookieOptions selectedproductitems = new CookieOptions();  
+            //selectedproductitems.Expires = DateTime.Now.AddMinutes(10);  
+            //Response.Cookies.Append("selectedproductitems", JsonConvert.SerializeObject(items), selectedproductitems);  
 
-            // set view data
-            ViewData["productitems"] = items;
+            //// set view data
+            //ViewData["productitems"] = items;
 
             return View();
         }
@@ -98,39 +105,39 @@ namespace part4.Controllers
         [HttpPost] 
         public ActionResult AddComputerToCart(string name, string price, string description, string img, string RAM, string HD, string CPU, string OS, string Display, string SoundCard) 
         {
-            // rebuild computer
-            ComputerItem item = new ComputerItem(name, Double.Parse(price), description, img);
-            item.RAM = JsonConvert.DeserializeObject<ProductItem>(RAM); 
-            item.HD = JsonConvert.DeserializeObject<ProductItem>(HD); 
-            item.CPU = JsonConvert.DeserializeObject<ProductItem>(CPU); 
-            item.OS = JsonConvert.DeserializeObject<ProductItem>(OS); 
-            item.Display = JsonConvert.DeserializeObject<ProductItem>(Display); 
-            item.SoundCard= JsonConvert.DeserializeObject<ProductItem>(SoundCard); 
+            //// rebuild computer
+            //ComputerItem item = new ComputerItem(name, Double.Parse(price), description, img);
+            //item.RAM = JsonConvert.DeserializeObject<ProductItem>(RAM); 
+            //item.HD = JsonConvert.DeserializeObject<ProductItem>(HD); 
+            //item.CPU = JsonConvert.DeserializeObject<ProductItem>(CPU); 
+            //item.OS = JsonConvert.DeserializeObject<ProductItem>(OS); 
+            //item.Display = JsonConvert.DeserializeObject<ProductItem>(Display); 
+            //item.SoundCard= JsonConvert.DeserializeObject<ProductItem>(SoundCard); 
 
-            // get selectedproductitems
-            List<ProductItem> items = new List<ProductItem>();
-            string itemsstring = Request.Cookies["selectedproductitems"];
-            if (itemsstring != null)
-            {
-                items = JsonConvert.DeserializeObject<List<ProductItem>>(itemsstring);
-            }
+            //// get selectedproductitems
+            //List<ProductItem> items = new List<ProductItem>();
+            //string itemsstring = Request.Cookies["selectedproductitems"];
+            //if (itemsstring != null)
+            //{
+            //    items = JsonConvert.DeserializeObject<List<ProductItem>>(itemsstring);
+            //}
 
-            // add to cart obj
-            items.Add(item.RAM);
-            items.Add(item.HD);
-            items.Add(item.CPU);
-            items.Add(item.OS);
-            items.Add(item.Display);
-            items.Add(item.SoundCard);
+            //// add to cart obj
+            //items.Add(item.RAM);
+            //items.Add(item.HD);
+            //items.Add(item.CPU);
+            //items.Add(item.OS);
+            //items.Add(item.Display);
+            //items.Add(item.SoundCard);
 
-            // store cookie
-            Response.Cookies.Delete("selectedproductitems");
-            CookieOptions selectedproductitems = new CookieOptions();
-            selectedproductitems.Expires = DateTime.Now.AddMinutes(10);
-            Response.Cookies.Append("selectedproductitems", JsonConvert.SerializeObject(items), selectedproductitems);
+            //// store cookie
+            //Response.Cookies.Delete("selectedproductitems");
+            //CookieOptions selectedproductitems = new CookieOptions();
+            //selectedproductitems.Expires = DateTime.Now.AddMinutes(10);
+            //Response.Cookies.Append("selectedproductitems", JsonConvert.SerializeObject(items), selectedproductitems);
 
-            // set view data
-            ViewData["productitems"] = items;
+            //// set view data
+            //ViewData["productitems"] = items;
 
             return View();
         }
