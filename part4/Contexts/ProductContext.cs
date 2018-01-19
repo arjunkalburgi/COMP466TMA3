@@ -16,4 +16,20 @@ namespace part4.Contexts
             base.OnModelCreating(modelBuilder);
         }
     }
+
+    public class CartItemsContext : DbContext
+    {
+        public CartItemsContext(DbContextOptions<CartItemsContext> options) : base(options)
+        {
+            Database.SetCommandTimeout(360);
+        }
+
+        public DbSet<CartItem> CartItems { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
+    }
+
 }

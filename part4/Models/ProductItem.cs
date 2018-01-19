@@ -1,11 +1,14 @@
 ﻿using System;
 using Newtonsoft.Json;
-using System.ComponentModel.DataAnnotations; 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema; 
 
 namespace part4.Models
 {
+    [Table("products")]
     public class ProductItem
     {
+        [Required]
         public Guid id { get; set; }
 
         [MaxLength(50)]
@@ -40,6 +43,22 @@ namespace part4.Models
         {
             return JsonConvert.SerializeObject(this); 
         }
+    }
+
+    [Table("cartitems")]
+    public class CartItem : ProductItem {
+        //public int count { get; set; }
+        public CartItem() {
+            
+        }
+    }
+
+    public class cartitemforview {
+        public string itemname { get; set; }
+        public string itemdescription { get; set; }
+        public double itemprice { get; set; }
+        public string itemimage { get; set; }
+        public int itemcount { get; set; }
     }
 
     //public class ComputerItem : ProductItem

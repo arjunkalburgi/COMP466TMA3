@@ -73,16 +73,18 @@
                 <input type="hidden" name="componentprice" value=null />
               </button>
         </form>
-        @foreach(var product in products.Products) {
+        @foreach(var product in products.ProductItem) {
 
             <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
                   <button class="center promo promo-example">
                     <img class="gridimage" src="@product.image"/>
-                    <input type="hidden" name="img" value="@product.image" />
                     <p class="promo-caption center">@product.name</p>
-                    <input type="hidden" name="name" value="@product.name" />
                     <p class="light center">Price: $@product.price</p>
+                    <input type="hidden" name="name" value="@product.name" />
                     <input type="hidden" name="price" value="@product.price" />
+                    <input type="hidden" name="description" value="@product.description" />
+                    <input type="hidden" name="image" value="@product.image" />
+                    <input type="hidden" name="id" value="@Guid.NewGuid()" />
                   </button>
             </form>
 

@@ -2,14 +2,14 @@
 using System;
 using System.Collections.Generic;
 
-namespace part4.Migrations
+namespace part4.Migrations.CartItems
 {
-    public partial class ProductContextTable : Migration
+    public partial class CartItemsContextTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Products",
+                name: "cartitems",
                 columns: table => new
                 {
                     id = table.Column<Guid>(nullable: false),
@@ -20,14 +20,14 @@ namespace part4.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Products", x => x.id);
+                    table.PrimaryKey("PK_cartitems", x => x.id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "cartitems");
         }
     }
 }

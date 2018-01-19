@@ -1,0 +1,272 @@
+﻿@model part4.ViewModels.ProductsList
+
+@{
+    ViewData["Title"] = "Home Page";
+    var products = ViewData["ProductsList"] as ProductsList;
+}
+<div class="row productlist">
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/ram.jpg"/>
+            <input type="hidden" name="image" value="/images/ram.jpg" />
+            <p class="promo-caption center">RAM1</p>
+            <input type="hidden" name="name" value="RAM1" />
+            <input type="hidden" name="description" value="First level ram" />
+            <p class="light center">Price: $9.99</p>
+            <input type="hidden" name="price" value="9.99" />
+          </button>
+    </form>
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/hd.jpg"/>
+            <input type="hidden" name="image" value="/images/hd.jpg" />
+            <p class="promo-caption center">hard drive1</p>
+            <input type="hidden" name="name" value="hard drive1" />
+            <input type="hidden" name="description" value="First level hard drive" />
+            <p class="light center">Price: $9.99</p>
+            <input type="hidden" name="price" value="9.99" />
+          </button>
+    </form>
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/cpu.jpg"/>
+            <input type="hidden" name="image" value="/images/cpu.jpg" />
+            <p class="promo-caption center">CPU1</p>
+            <input type="hidden" name="name" value="CPU1" />
+            <input type="hidden" name="description" value="First level CPU" />
+            <p class="light center">Price: $9.99</p>
+            <input type="hidden" name="price" value="9.99" />
+          </button>
+    </form>
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/display.jpg"/>
+            <input type="hidden" name="image" value="/images/display.jpg" />
+            <p class="promo-caption center">Monitor1</p>
+            <input type="hidden" name="name" value="Monitor1" />
+            <input type="hidden" name="description" value="First level monitor" />
+            <p class="light center">Price: $9.99</p>
+            <input type="hidden" name="price" value="9.99" />
+          </button>
+    </form>
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/os.png"/>
+            <input type="hidden" name="image" value="/images/os.png" />
+            <p class="promo-caption center">OS1</p>
+            <input type="hidden" name="name" value="OS1" />
+            <input type="hidden" name="description" value="First level OS" />
+            <p class="light center">Price: $9.99</p>
+            <input type="hidden" name="price" value="9.99" />
+          </button>
+    </form>
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/scard.jpg"/>
+            <input type="hidden" name="image" value="/images/scard.jpg" />
+            <p class="promo-caption center">soundcard1</p>
+            <input type="hidden" name="name" value="soundcard1" />
+            <input type="hidden" name="description" value="First level sound card" />
+            <p class="light center">Price: $9.99</p>
+            <input type="hidden" name="price" value="9.99" />
+          </button>
+    </form>
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/ram.jpg"/>
+            <input type="hidden" name="image" value="/images/ram.jpg" />
+            <p class="promo-caption center">RAM 2</p>
+            <input type="hidden" name="name" value="RAM 2" />
+            <input type="hidden" name="description" value="Second level ram" />
+            <p class="light center">Price: $10.99</p>
+            <input type="hidden" name="price" value="10.99" />
+          </button>
+    </form>
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/hd.jpg"/>
+            <input type="hidden" name="image" value="/images/hd.jpg" />
+            <p class="promo-caption center">hard drive 2</p>
+            <input type="hidden" name="name" value="hard drive 2" />
+            <input type="hidden" name="description" value="Second level hard drive" />
+            <p class="light center">Price: $10.99</p>
+            <input type="hidden" name="price" value="10.99" />
+          </button>
+    </form>
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/cpu.jpg"/>
+            <input type="hidden" name="image" value="/images/cpu.jpg" />
+            <p class="promo-caption center">CPU 2</p>
+            <input type="hidden" name="name" value="CPU 2" />
+            <input type="hidden" name="description" value="Second level CPU" />
+            <p class="light center">Price: $10.99</p>
+            <input type="hidden" name="price" value="10.99" />
+          </button>
+    </form>
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/display.jpg"/>
+            <input type="hidden" name="image" value="/images/display.jpg" />
+            <p class="promo-caption center">Monitor 2</p>
+            <input type="hidden" name="name" value="Monitor 2" />
+            <input type="hidden" name="description" value="Second level Monitor" />
+            <p class="light center">Price: $10.99</p>
+            <input type="hidden" name="price" value="10.99" />
+          </button>
+    </form>
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/os.png"/>
+            <input type="hidden" name="image" value="/images/os.png" />
+            <p class="promo-caption center">OS 2</p>
+            <input type="hidden" name="name" value="OS 2" />
+            <input type="hidden" name="description" value="Second level OS" />
+            <p class="light center">Price: $10.99</p>
+            <input type="hidden" name="price" value="10.99" />
+          </button>
+    </form>
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/scard.jpg"/>
+            <input type="hidden" name="image" value="/images/scard.jpg" />
+            <p class="promo-caption center">soundcard 2</p>
+            <input type="hidden" name="name" value="soundcard 2" />
+            <input type="hidden" name="description" value="Second level soundcard" />
+            <p class="light center">Price: $10.99</p>
+            <input type="hidden" name="price" value="10.99" />
+          </button>
+    </form>
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/ram.jpg"/>
+            <input type="hidden" name="image" value="/images/ram.jpg" />
+            <p class="promo-caption center">RAM 3</p>
+            <input type="hidden" name="name" value="RAM 3" />
+            <input type="hidden" name="description" value="Third level ram" />
+            <p class="light center">Price: $11.99</p>
+            <input type="hidden" name="price" value="11.99" />
+          </button>
+    </form>
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/hd.jpg"/>
+            <input type="hidden" name="image" value="/images/hd.jpg" />
+            <p class="promo-caption center">hard drive 3</p>
+            <input type="hidden" name="name" value="hard drive 3" />
+            <input type="hidden" name="description" value="Third level hard drive" />
+            <p class="light center">Price: $11.99</p>
+            <input type="hidden" name="price" value="11.99" />
+          </button>
+    </form>
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/cpu.jpg"/>
+            <input type="hidden" name="image" value="/images/cpu.jpg" />
+            <p class="promo-caption center">CPU 3</p>
+            <input type="hidden" name="name" value="CPU 3" />
+            <input type="hidden" name="description" value="Third level CPU" />
+            <p class="light center">Price: $11.99</p>
+            <input type="hidden" name="price" value="11.99" />
+          </button>
+    </form>
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/display.jpg"/>
+            <input type="hidden" name="image" value="/images/display.jpg" />
+            <p class="promo-caption center">Monitor 3</p>
+            <input type="hidden" name="name" value="Monitor 3" />
+            <input type="hidden" name="description" value="Third level Monitor" />
+            <p class="light center">Price: $11.99</p>
+            <input type="hidden" name="price" value="11.99" />
+          </button>
+    </form>
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/os.png"/>
+            <input type="hidden" name="image" value="/images/os.png" />
+            <p class="promo-caption center">OS 3</p>
+            <input type="hidden" name="name" value="OS 3" />
+            <input type="hidden" name="description" value="Third level OS" />
+            <p class="light center">Price: $11.99</p>
+            <input type="hidden" name="price" value="11.99" />
+          </button>
+    </form>
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/scard.jpg"/>
+            <input type="hidden" name="image" value="/images/scard.jpg" />
+            <p class="promo-caption center">soundcard 3</p>
+            <input type="hidden" name="name" value="soundcard 3" />
+            <input type="hidden" name="description" value="Third level soundcard" />
+            <p class="light center">Price: $11.99</p>
+            <input type="hidden" name="price" value="11.99" />
+          </button>
+    </form>
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/ram.jpg"/>
+            <input type="hidden" name="image" value="/images/ram.jpg" />
+            <p class="promo-caption center">RAM 4</p>
+            <input type="hidden" name="name" value="RAM 4" />
+            <input type="hidden" name="description" value="Fourth level ram" />
+            <p class="light center">Price: $12.99</p>
+            <input type="hidden" name="price" value="12.99" />
+          </button>
+    </form>
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/hd.jpg"/>
+            <input type="hidden" name="image" value="/images/hd.jpg" />
+            <p class="promo-caption center">hard drive 4</p>
+            <input type="hidden" name="name" value="hard drive 4" />
+            <input type="hidden" name="description" value="Fourth level hard drive" />
+            <p class="light center">Price: $12.99</p>
+            <input type="hidden" name="price" value="12.99" />
+          </button>
+    </form>
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/cpu.jpg"/>
+            <input type="hidden" name="image" value="/images/cpu.jpg" />
+            <p class="promo-caption center">CPU 4</p>
+            <input type="hidden" name="name" value="CPU 4" />
+            <input type="hidden" name="description" value="Fourth level CPU" />
+            <p class="light center">Price: $12.99</p>
+            <input type="hidden" name="price" value="12.99" />
+          </button>
+    </form>
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/display.jpg"/>
+            <input type="hidden" name="image" value="/images/display.jpg" />
+            <p class="promo-caption center">Monitor 4</p>
+            <input type="hidden" name="name" value="Monitor 4" />
+            <input type="hidden" name="description" value="Fourth level Monitor" />
+            <p class="light center">Price: $12.99</p>
+            <input type="hidden" name="price" value="12.99" />
+          </button>
+    </form>
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/os.png"/>
+            <input type="hidden" name="image" value="/images/os.png" />
+            <p class="promo-caption center">OS 4</p>
+            <input type="hidden" name="name" value="OS 4" />
+            <input type="hidden" name="description" value="Fourth level OS" />
+            <p class="light center">Price: $12.99</p>
+            <input type="hidden" name="price" value="12.99" />
+          </button>
+    </form>
+    <form asp-controller="Home" asp-action="productadder" class="col s6 m4 l2">
+          <button class="center promo promo-example">
+            <img class="gridimage" src="~/images/scard.jpg"/>
+            <input type="hidden" name="image" value="/images/scard.jpg" />
+            <p class="promo-caption center">soundcard 4</p>
+            <input type="hidden" name="name" value="soundcard 4" />
+            <input type="hidden" name="description" value="Fourth level soundcard" />
+            <p class="light center">Price: $12.99</p>
+            <input type="hidden" name="price" value="12.99" />
+          </button>
+    </form>
+</div>

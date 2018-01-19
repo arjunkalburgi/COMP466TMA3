@@ -15,8 +15,9 @@
         <form asp-controller="Home" asp-action="AddToCart">
             <input type="hidden" name="name" value="@item.name" />
             <input type="hidden" name="price" value="@item.price" />
-            <input type="hidden" name="img" value="@item.image" />
-            <input type="hidden" name="description" value="@item.description.Replace("**", " ")" />
+            <input type="hidden" name="description" value="@item.description" />
+            <input type="hidden" name="image" value="@item.image" />
+            <input type="hidden" name="id" value="@item.id" />
             <button type="submit">Add @item.name to cart</button>
         </form>
     </div>

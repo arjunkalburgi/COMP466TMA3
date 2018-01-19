@@ -24,6 +24,7 @@ namespace part4
             var connection = @"server=localhost;userid=root;password=password;database=store;";
             //var connection = @"User ID=postgres;Password=postgres;Host=192.168.99.100;Port=5432;Database=store;";
             services.AddDbContext<ProductContext>(options => options.UseMySql(connection));
+            services.AddDbContext<CartItemsContext>(options => options.UseMySql(connection));
 
         }
 

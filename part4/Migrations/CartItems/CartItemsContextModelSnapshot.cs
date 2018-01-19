@@ -8,10 +8,10 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 using part4.Contexts;
 using System;
 
-namespace part4.Migrations
+namespace part4.Migrations.CartItems
 {
-    [DbContext(typeof(ProductContext))]
-    partial class ProductContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(CartItemsContext))]
+    partial class CartItemsContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -20,7 +20,7 @@ namespace part4.Migrations
                 .HasAnnotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn)
                 .HasAnnotation("ProductVersion", "2.0.1-rtm-125");
 
-            modelBuilder.Entity("part4.Models.ProductItem", b =>
+            modelBuilder.Entity("part4.Models.CartItem", b =>
                 {
                     b.Property<Guid>("id")
                         .ValueGeneratedOnAdd();
@@ -41,7 +41,7 @@ namespace part4.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("products");
+                    b.ToTable("cartitems");
                 });
 #pragma warning restore 612, 618
         }
