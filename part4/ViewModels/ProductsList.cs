@@ -10,6 +10,6 @@ namespace part4.ViewModels
         public List<ProductItem> ProductItem { get; set; }
         public List<CartItem> CartItems { get; set; }
         public List<cartitemforview> viewablecartitems { get; set; }
-
+        public List<ComputerItem> ComputerItem { get; set; }
     }
 }

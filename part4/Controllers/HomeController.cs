@@ -17,17 +17,24 @@ namespace part4.Controllers
     {
         public ProductContext context;
         public CartItemsContext cartcontext;
+        public ComputerContext compcontext; 
 
-        public HomeController(ProductContext context, CartItemsContext ccontext) {
+        public HomeController(ProductContext context, CartItemsContext ccontext, ComputerContext compcontext) {
             this.context = context;
             this.cartcontext = ccontext;
+            this.compcontext = compcontext; 
         }
 
         public IActionResult Index()
         {
             ViewData["ProductsList"] = new ProductsList()
             {
-                ProductItem = context.Products.ToList()
+                ProductItem = context.Products
+                                   .ToList()
+            };
+            ViewData["ComputersList"] = new ProductsList()
+            {
+                ComputerItem = compcontext.Computers.ToList()
             };
 
             return View();
@@ -160,9 +167,24 @@ namespace part4.Controllers
 
         public IActionResult Indexcopy()
         {
-            //ViewData["Message"] = "Your contact page.";
-
             return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> computeradder(ComputerItem pi)
+        {
+            //pi.id = Guid.NewGuid();
+            //pi.RAM = new ProductItem("Ram1", 9.99, "This is a first level ram", "/images/ram.jpg");
+            //pi.HD = new ProductItem("HD1", 9.99, "This is a first level hd", "/images/hd.jpg");
+            //pi.CPU = new ProductItem("CPU1", 9.99, "This is a first level cpu", "/images/cpu.jpg");
+            //pi.Display = new ProductItem("Display1", 9.99, "This is a first level monitor", "/images/display.jpg");
+            //pi.OS = new ProductItem("OS1", 9.99, "This is a first level os", "/images/os.png");
+            //pi.SoundCard = new ProductItem("SoundCard1", 9.99, "This is a first level sound card", "/images/scard.jpg");
+
+            compcontext.Computers.Add(pi);
+            await compcontext.SaveChangesAsync();
+
+            return RedirectToAction("Indexcopy");
         }
 
         [HttpPost]
@@ -171,10 +193,6 @@ namespace part4.Controllers
             context.Products.Add(pi);
             await context.SaveChangesAsync();
 
-            //ViewData["productitems"] = new ProductsList()
-            //{
-            //    CartItems = context.CartItems.ToList()
-            //};
             return RedirectToAction("Indexcopy"); 
         }
 

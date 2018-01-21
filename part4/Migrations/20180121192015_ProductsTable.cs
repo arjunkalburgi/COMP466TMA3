@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace part4.Migrations
 {
-    public partial class ProductContextTable : Migration
+    public partial class ProductsTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

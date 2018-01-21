@@ -17,6 +17,8 @@ namespace part4.Contexts
         }
     }
 
+
+
     public class CartItemsContext : DbContext
     {
         public CartItemsContext(DbContextOptions<CartItemsContext> options) : base(options)
@@ -31,5 +33,37 @@ namespace part4.Contexts
             base.OnModelCreating(modelBuilder);
         }
     }
+
+    public class ComputerContext : DbContext
+    {
+        public ComputerContext(DbContextOptions<ComputerContext> options) : base(options) 
+        {
+            Database.SetCommandTimeout(360);
+        }
+
+        public DbSet<ComputerItem> Computers { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
+
+    }
+
+    //public class ComputerItemsContext : DbContext
+    //{
+    //    public ComputerItemsContext(DbContextOptions<ComputerItemsContext> options) : base(options)
+    //    {
+    //        Database.SetCommandTimeout(360);
+    //    }
+
+    //    public DbSet<ComputerItem> ComputerCartItems { get; set; }
+
+    //    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    //    {
+    //        base.OnModelCreating(modelBuilder);
+    //    }
+    //}
+
 
 }

@@ -11,8 +11,8 @@ using System;
 namespace part4.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20180119081534_ProductContextTable")]
-    partial class ProductContextTable
+    [Migration("20180121192015_ProductsTable")]
+    partial class ProductsTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
