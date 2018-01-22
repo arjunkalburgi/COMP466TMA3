@@ -83,19 +83,19 @@ namespace part4.Controllers
         public ActionResult CompPage(ComputerItem ci)
         {
             ComputerItem c = compcontext.Computers.Where(comp => comp.id == ci.id).First();
+            ComputerObject co = new ComputerObject(c, context);
 
-            ComputerObject co = new ComputerObject();
-            co.id = c.id;
-            co.name = c.name;
-            co.image = c.image;
-            co.price = c.price;
-            co.description = c.description;
-            co.RAM = context.Products.Where(p => p.id == c.RAMid).First(); 
-            co.HD = context.Products.Where(p => p.id == c.HDid).First(); 
-            co.CPU = context.Products.Where(p => p.id == c.CPUid).First(); 
-            co.Display = context.Products.Where(p => p.id == c.Displayid).First(); 
-            co.OS = context.Products.Where(p => p.id == c.OSid).First(); 
-            co.SoundCard = context.Products.Where(p => p.id == c.SoundCardid).First(); 
+            ViewData["item"] = co;
+
+            return View();
+        }
+
+        [HttpPost] 
+        public ActionResult CompEdit(Guid id, string type, string lvl) {
+            ComputerItem c = compcontext.Computers.Where(comp => comp.id == id).First();
+            ComputerObject co = new ComputerObject(c, context);
+
+            co.Newcomponent(type, lvl, context);
 
             ViewData["item"] = co;
 

@@ -1,7 +1,9 @@
 ﻿using System;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema; 
+using System.ComponentModel.DataAnnotations.Schema;
+using part4.Contexts;
+using System.Linq;
 
 namespace part4.Models
 {
@@ -30,19 +32,22 @@ namespace part4.Models
             
         }
 
-        //public ProductItem(string name, double price, string description, string img)
-        //{
-        //    this.id = Guid.NewGuid(); 
-        //    this.name = name;
-        //    this.price = price;
-        //    this.description = description;
-        //    this.image = img; 
-        //}
-
         public override string ToString()
         {
             return JsonConvert.SerializeObject(this); 
         }
+
+        public ProductItem pi(string name, double price, string description, string img)
+        {
+            this.id = Guid.NewGuid();
+            this.name = name;
+            this.price = price;
+            this.description = description;
+            this.image = img;
+
+            return this; 
+        }
+
     }
 
     [Table("cartitems")]
@@ -113,6 +118,21 @@ namespace part4.Models
         public ProductItem OS { get; set; }
         public ProductItem SoundCard { get; set; }
 
+        public ComputerObject(ComputerItem c, ProductContext context) {
+            this.id = c.id;
+            this.name = c.name;
+            this.image = c.image;
+            this.price = c.price;
+            this.description = c.description;
+            this.RAM = context.Products.Where(p => p.id == c.RAMid).First(); 
+            this.HD = context.Products.Where(p => p.id == c.HDid).First(); 
+            this.CPU = context.Products.Where(p => p.id == c.CPUid).First(); 
+            this.Display = context.Products.Where(p => p.id == c.Displayid).First(); 
+            this.OS = context.Products.Where(p => p.id == c.OSid).First(); 
+            this.SoundCard = context.Products.Where(p => p.id == c.SoundCardid).First(); 
+
+        }
+
         public double calculateprice() {
             double price = 0;
             price += this.RAM.price; 
@@ -139,23 +159,82 @@ namespace part4.Models
             return desc; 
         }
 
-    //    public void Newcomponent(string name, double price) {
-    //        //if (name.Contains("RAM")) {
-    //        //    this.RAM = new ProductItem(name, price, "the better ram", "/images/ram.jpg"); 
-    //        //} else if (name.Contains("HD")) {
-    //        //    this.HD = new ProductItem(name, price, "the better HD", "/images/hd.jpg"); 
-    //        //} else if (name.Contains("CPU")) {
-    //        //    this.CPU = new ProductItem(name, price, "the better CPU", "/images/cpu.jpg"); 
-    //        //} else if (name.Contains("Display")) {
-    //        //    this.Display = new ProductItem(name, price, "the better display", "/images/display.jpg"); 
-    //        //} else if (name.Contains("OS")) {
-    //        //    this.OS = new ProductItem(name, price, "the better OS", "/images/os.png"); 
-    //        //} else if (name.Contains("SoundCard")) {
-    //        //    this.SoundCard = new ProductItem(name, price, "the better soundcard", "/images/scard.jpg"); 
-    //        //}
-    //        this.calculateprice();
-    //        this.redodescription();
-    //    }
+        public void Newcomponent(string type, string level, ProductContext context) {
+
+            double price = 9.99;
+            string adjective = ""; 
+            switch (level) {
+                case "1":
+                    price = 9.99;
+                    adjective = "first";
+                    break;
+                case "2":
+                    price = 10.99;
+                    adjective = "second";
+                    break;
+                case "3":
+                    price = 11.99;
+                    adjective = "third";
+                    break;
+                case "4":
+                    price = 12.99;
+                    adjective = "fourth";
+                    break;
+                case null:
+                    price = 9.99;
+                    adjective = "first";
+                    break;
+            }
+
+            switch (type) {
+                case "RAM":
+                    this.RAM = new ProductItem().pi(type + level, price, adjective + "level ram", "/images/ram.jpg");
+                    context.Products.Add(this.RAM);
+                    break; 
+                case "HD": 
+                    this.HD = new ProductItem().pi(type + level, price, adjective + "level HD", "/images/hd.jpg");
+                    context.Products.Add((ProductItem)this.HD);
+                    break; 
+                case "CPU": 
+                    this.CPU = new ProductItem().pi(type + level, price, adjective + "level CPU", "/images/cpu.jpg"); 
+                    context.Products.Add((ProductItem)this.CPU);
+                    break;
+                case "Display":
+                    this.Display = new ProductItem().pi(type + level, price, adjective + "level display", "/images/display.jpg"); 
+                    context.Products.Add((ProductItem)this.Display);
+                    break;
+                case "OS":
+                    this.OS = new ProductItem().pi(type + level, price, adjective + "level OS", "/images/os.png"); 
+                    context.Products.Add((ProductItem)this.OS);
+                    break;
+                case "SoundCard":
+                    this.SoundCard = new ProductItem().pi(type + level, price, adjective + "level soundcard", "/images/scard.jpg");
+                    context.Products.Add((ProductItem)this.SoundCard);
+                    break; 
+                case null:
+                    break; 
+            }
+
+            this.calculateprice();
+            this.redodescription();
+        }
+
+        public ComputerItem getcompitem() {
+            ComputerItem c = new ComputerItem(); 
+            c.id = this.id;
+            c.name = this.name;
+            c.image = this.image;
+            c.price = this.price;
+            c.description = this.description;
+            c.RAMid = this.RAM.id;
+            c.HDid = this.HD.id;
+            c.CPUid = this.CPU.id;
+            c.Displayid = this.Display.id;
+            c.OSid = this.OS.id;
+            c.SoundCardid = this.SoundCard.id;
+
+            return c; 
+        }
     }
 
 
