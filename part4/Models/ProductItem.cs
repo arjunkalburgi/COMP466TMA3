@@ -78,6 +78,34 @@ namespace part4.Models
         [Required]
         public string image { get; set; }
 
+        public Guid RAMid { get; set; }
+        public Guid HDid { get; set; }
+        public Guid CPUid { get; set; }
+        public Guid Displayid { get; set; }
+        public Guid OSid { get; set; }
+        public Guid SoundCardid { get; set; }
+    }
+
+    public class ComputerObject {
+
+        [Required]
+        public Guid id { get; set; }
+
+        [MaxLength(50)]
+        [Required]
+        public string name { get; set; }
+
+        [Required]
+        public double price { get; set; }
+
+        [MaxLength(700)]
+        [Required]
+        public string description { get; set; }
+
+        [MaxLength(100)]
+        [Required]
+        public string image { get; set; }
+
         public ProductItem RAM { get; set; }
         public ProductItem HD { get; set; }
         public ProductItem CPU { get; set; }
@@ -129,4 +157,6 @@ namespace part4.Models
     //        this.redodescription();
     //    }
     }
+
+
 }

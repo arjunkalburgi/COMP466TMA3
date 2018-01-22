@@ -55,36 +55,13 @@
 
 <div class="container body-content">
     <div class="row productlist">
-        <form asp-controller="Home" asp-action="Computereditpage2" class="col s6 m4 l2">
-              <button type="submit" class="center promo promo-example">
-                <img class="gridimage" src="~/images/computer1.jpg"/>
-                <input type="hidden" name="img" value="/images/computer1.jpg" />
-                <p class="promo-caption center">Computer1</p>
-                <input class="gridimage" type="hidden" name="name" value="Computer1" />
-                <p class="light center">Price: $59.99</p>
-                <input type="hidden" name="price" value="9.99" />
-                <input type="hidden" name="description" value="This is a first level computer." />
-                <input type="hidden" name="RAM" value=null />
-                <input type="hidden" name="HD" value=null />
-                <input type="hidden" name="CPU" value=null />
-                <input type="hidden" name="OS" value=null />
-                <input type="hidden" name="Display" value=null />
-                <input type="hidden" name="SoundCard" value=null />
-                <input type="hidden" name="componentname" value=null />
-                <input type="hidden" name="componentprice" value=null />
-              </button>
-        </form>
         @foreach(var product in comps.ComputerItem) {
-            <form asp-controller="Home" asp-action="Productpage" class="col s6 m4 l2">
+            <form asp-controller="Home" asp-action="CompPage" class="col s6 m4 l2">
                   <button class="center promo promo-example">
                     <img class="gridimage" src="@product.image"/>
                     <p class="promo-caption center">@product.name</p>
                     <p class="light center">Price: $@product.price</p>
-                    <input type="hidden" name="name" value="@product.name" />
-                    <input type="hidden" name="price" value="@product.price" />
-                    <input type="hidden" name="description" value="@product.description" />
-                    <input type="hidden" name="image" value="@product.image" />
-                    <input type="hidden" name="id" value="@Guid.NewGuid()" />
+                    <input type="hidden" name="id" value="@product.id" />
                   </button>
             </form>
         }

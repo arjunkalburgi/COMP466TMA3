@@ -80,33 +80,24 @@ namespace part4.Controllers
         }
 
         [HttpPost]
-        public ActionResult Computereditpage2(string name, string price, string description, string img, string RAM, string HD, string CPU, string OS, string Display, string SoundCard, string componentname, string componentprice)
+        public ActionResult CompPage(ComputerItem ci)
         {
-            //// build/rebuild computer
-            //ComputerItem item = new ComputerItem(name, Double.Parse(price), description, img);
-            //if (RAM != "null") {
-            //    item.RAM = JsonConvert.DeserializeObject<ProductItem>(RAM); 
-            //}
-            //if (HD != "null") {
-            //    item.HD = JsonConvert.DeserializeObject<ProductItem>(HD);
-            //}
-            //if (CPU != "null") {
-            //    item.CPU = JsonConvert.DeserializeObject<ProductItem>(CPU); 
-            //}
-            //if (OS != "null") {
-            //    item.OS = JsonConvert.DeserializeObject<ProductItem>(OS); 
-            //}
-            //if (Display != "null") {
-            //    item.Display = JsonConvert.DeserializeObject<ProductItem>(Display); 
-            //}
-            //if (SoundCard != "null") {
-            //    item.SoundCard= JsonConvert.DeserializeObject<ProductItem>(SoundCard); 
-            //}
-            //if (componentname != "null" && componentprice != "null") {
-            //    item.Newcomponent(componentname, Double.Parse(componentprice));
-            //}
+            ComputerItem c = compcontext.Computers.Where(comp => comp.id == ci.id).First();
 
-            //ViewData["item"] = item;
+            ComputerObject co = new ComputerObject();
+            co.id = c.id;
+            co.name = c.name;
+            co.image = c.image;
+            co.price = c.price;
+            co.description = c.description;
+            co.RAM = context.Products.Where(p => p.id == c.RAMid).First(); 
+            co.HD = context.Products.Where(p => p.id == c.HDid).First(); 
+            co.CPU = context.Products.Where(p => p.id == c.CPUid).First(); 
+            co.Display = context.Products.Where(p => p.id == c.Displayid).First(); 
+            co.OS = context.Products.Where(p => p.id == c.OSid).First(); 
+            co.SoundCard = context.Products.Where(p => p.id == c.SoundCardid).First(); 
+
+            ViewData["item"] = co;
 
             return View();
         }
@@ -175,11 +166,17 @@ namespace part4.Controllers
         {
             //pi.id = Guid.NewGuid();
             //pi.RAM = new ProductItem("Ram1", 9.99, "This is a first level ram", "/images/ram.jpg");
+            //context.Products.Add(pi.RAM);
             //pi.HD = new ProductItem("HD1", 9.99, "This is a first level hd", "/images/hd.jpg");
+            //context.Products.Add(pi.HD);
             //pi.CPU = new ProductItem("CPU1", 9.99, "This is a first level cpu", "/images/cpu.jpg");
+            //context.Products.Add(pi.CPU);
             //pi.Display = new ProductItem("Display1", 9.99, "This is a first level monitor", "/images/display.jpg");
+            //context.Products.Add(pi.Display);
             //pi.OS = new ProductItem("OS1", 9.99, "This is a first level os", "/images/os.png");
+            //context.Products.Add(pi.OS);
             //pi.SoundCard = new ProductItem("SoundCard1", 9.99, "This is a first level sound card", "/images/scard.jpg");
+            //context.Products.Add(pi.SoundCard);
 
             compcontext.Computers.Add(pi);
             await compcontext.SaveChangesAsync();
