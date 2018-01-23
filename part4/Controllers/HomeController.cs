@@ -18,13 +18,15 @@ namespace part4.Controllers
         public ProductContext context;
         public CartItemsContext cartcontext;
         public ComputerContext compcontext;
-        public ComputerCartItemsContext compcartcontext; 
+        public ComputerCartItemsContext compcartcontext;
+        public UserContext ucontext;
 
-        public HomeController(ProductContext context, CartItemsContext ccontext, ComputerContext compcontext, ComputerCartItemsContext cccontext) {
+        public HomeController(ProductContext context, CartItemsContext ccontext, ComputerContext compcontext, ComputerCartItemsContext cccontext, UserContext ucontext) {
             this.context = context;
             this.cartcontext = ccontext;
             this.compcontext = compcontext;
-            this.compcartcontext = cccontext; 
+            this.compcartcontext = cccontext;
+            this.ucontext = ucontext; 
         }
 
         public IActionResult Index()
@@ -194,6 +196,39 @@ namespace part4.Controllers
             ViewData["Message"] = "Your contact page.";
 
             return View();
+        }
+
+        public IActionResult SignIn()
+        {
+            ViewData["Message"] = "Your contact page.";
+
+            return View();
+        }
+        [HttpPost]
+        public IActionResult GetUser(string name, string password)
+        {
+            // lookup user in the db, else make new user
+            user u = ucontext.Users.Where(usr => usr.name == name).First();
+            if (u is null) {
+                u = new user().Make(name, password);
+                ucontext.Users.Add(u);
+            }
+
+            // set u as curruser
+            Response.Cookies.Delete("curruser"); 
+            CookieOptions curruser = new CookieOptions();  
+            curruser.Expires = DateTime.Now.AddMinutes(10);  
+            Response.Cookies.Append("curruser", u.id.ToString(), curruser);  
+
+            // send home
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult LogOut()
+        {
+            Response.Cookies.Delete("curruser"); 
+
+            return RedirectToAction("Index");
         }
 
         public IActionResult Indexcopy()

@@ -17,8 +17,6 @@ namespace part4.Contexts
         }
     }
 
-
-
     public class CartItemsContext : DbContext
     {
         public CartItemsContext(DbContextOptions<CartItemsContext> options) : base(options)
@@ -58,6 +56,21 @@ namespace part4.Contexts
         }
 
         public DbSet<CartComputer> ComputerCartItems { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
+    }
+
+    public class UserContext : DbContext
+    {
+        public UserContext(DbContextOptions<UserContext> options) : base(options)
+        {
+            Database.SetCommandTimeout(360);
+        }
+
+        public DbSet<user> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
