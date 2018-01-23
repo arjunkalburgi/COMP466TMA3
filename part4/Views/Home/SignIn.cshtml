@@ -7,11 +7,13 @@
     <h3>Shop till you drop</h3>
     Sign In or Log In.
 
-    <form>
+    <form asp-controller="Home" asp-action="GetUser" >
         <br/>
         Name: <input type="text" name="name" /> 
         <br/>
         Password: <input type="text" name="password"  />
+
+        <input type="submit" class="button orange" />
     </form>
         
 </div>

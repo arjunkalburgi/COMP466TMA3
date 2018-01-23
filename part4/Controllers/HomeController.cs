@@ -202,16 +202,28 @@ namespace part4.Controllers
         {
             ViewData["Message"] = "Your contact page.";
 
-            return View();
+            if (Request.Cookies["curruser"] is null)
+            {
+                return View();
+            }
+            Response.Cookies.Delete("curruser");
+            return RedirectToAction("Index");
         }
         [HttpPost]
-        public IActionResult GetUser(string name, string password)
+        public async Task<IActionResult> GetUser(string name, string password)
         {
             // lookup user in the db, else make new user
-            user u = ucontext.Users.Where(usr => usr.name == name).First();
-            if (u is null) {
+            user u = null; 
+            try {
+                u = ucontext.Users.Where(usr => usr.name == name).First(); 
+                if (u.password != password) {
+                    return RedirectToAction("SignIn");
+                }
+            } catch (InvalidOperationException e) {
+                Console.WriteLine(e); 
                 u = new user().Make(name, password);
                 ucontext.Users.Add(u);
+                await ucontext.SaveChangesAsync();
             }
 
             // set u as curruser
@@ -221,13 +233,6 @@ namespace part4.Controllers
             Response.Cookies.Append("curruser", u.id.ToString(), curruser);  
 
             // send home
-            return RedirectToAction("Index");
-        }
-
-        public IActionResult LogOut()
-        {
-            Response.Cookies.Delete("curruser"); 
-
             return RedirectToAction("Index");
         }
 
