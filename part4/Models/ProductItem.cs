@@ -91,8 +91,10 @@ namespace part4.Models
         public Guid SoundCardid { get; set; }
     }
 
-    public class ComputerObject {
+    [Table("cartcomps")]
+    public class CartComputer : ComputerItem { }
 
+    public class ComputerObject {
         [Required]
         public Guid id { get; set; }
 
@@ -118,7 +120,7 @@ namespace part4.Models
         public ProductItem OS { get; set; }
         public ProductItem SoundCard { get; set; }
 
-        public ComputerObject(ComputerItem c, ProductContext context) {
+        public ComputerObject make(ComputerItem c, ProductContext context) {
             this.id = c.id;
             this.name = c.name;
             this.image = c.image;
@@ -129,8 +131,9 @@ namespace part4.Models
             this.CPU = context.Products.Where(p => p.id == c.CPUid).First(); 
             this.Display = context.Products.Where(p => p.id == c.Displayid).First(); 
             this.OS = context.Products.Where(p => p.id == c.OSid).First(); 
-            this.SoundCard = context.Products.Where(p => p.id == c.SoundCardid).First(); 
+            this.SoundCard = context.Products.Where(p => p.id == c.SoundCardid).First();
 
+            return this; 
         }
 
         public double calculateprice() {
@@ -234,6 +237,23 @@ namespace part4.Models
             c.SoundCardid = this.SoundCard.id;
 
             return c; 
+        }
+
+        public void addCompToCart(ComputerCartItemsContext c) {
+            CartComputer ci = new CartComputer();
+            ci.id = this.id; 
+            ci.name = this.name; 
+            ci.image = this.image; 
+            ci.price = this.price; 
+            ci.description = this.description; 
+            ci.RAMid = this.RAM.id; 
+            ci.HDid = this.HD.id; 
+            ci.CPUid = this.CPU.id; 
+            ci.Displayid = this.Display.id; 
+            ci.OSid = this.OS.id; 
+            ci.SoundCardid = this.SoundCard.id; 
+
+            c.ComputerCartItems.Add(ci); 
         }
     }
 

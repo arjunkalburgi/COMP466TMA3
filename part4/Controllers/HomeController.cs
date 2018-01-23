@@ -17,12 +17,14 @@ namespace part4.Controllers
     {
         public ProductContext context;
         public CartItemsContext cartcontext;
-        public ComputerContext compcontext; 
+        public ComputerContext compcontext;
+        public ComputerCartItemsContext compcartcontext; 
 
-        public HomeController(ProductContext context, CartItemsContext ccontext, ComputerContext compcontext) {
+        public HomeController(ProductContext context, CartItemsContext ccontext, ComputerContext compcontext, ComputerCartItemsContext cccontext) {
             this.context = context;
             this.cartcontext = ccontext;
-            this.compcontext = compcontext; 
+            this.compcontext = compcontext;
+            this.compcartcontext = cccontext; 
         }
 
         public IActionResult Index()
@@ -55,26 +57,50 @@ namespace part4.Controllers
             cartcontext.CartItems.Add(pi);
             await cartcontext.SaveChangesAsync();
 
-            // gather all distinct items 
+            // get all cart items 
             ProductsList list = new ProductsList()
             {
                 viewablecartitems = cartcontext.CartItems
-                                       .Select(cartitem => new cartitemforview() {
+                                       .Select(cartitem => new cartitemforview()
+                                       {
                                            itemname = cartitem.name,
                                            itemimage = cartitem.image,
                                            itemdescription = cartitem.description,
                                            itemprice = cartitem.price,
                                        }).Distinct()
-                                       .ToList()
+                                       .ToList(),
+                viewablecompitems = compcartcontext.ComputerCartItems
+                                        .Select(compcartitem => new CartComputer()
+                                        {
+                                            id = compcartitem.id,
+                                            name = compcartitem.name,
+                                            image = compcartitem.image,
+                                            price = compcartitem.price,
+                                            description = compcartitem.description,
+                                            RAMid = compcartitem.RAMid,
+                                            HDid = compcartitem.HDid,
+                                            CPUid = compcartitem.CPUid,
+                                            Displayid = compcartitem.Displayid,
+                                            OSid = compcartitem.OSid,
+                                            SoundCardid = compcartitem.SoundCardid,
+                                        }).ToList(),
+                ComputerObjs = new List<ComputerObject>()
             };
             // count distinct items
-            foreach (cartitemforview vm in list.viewablecartitems) {
+            foreach (cartitemforview vm in list.viewablecartitems)
+            {
                 vm.itemcount = cartcontext.CartItems
                            .Where(cartitem => cartitem.name == vm.itemname)
                            .Count();
             }
+            // get comp objects
+            List<ComputerObject> complist = new List<ComputerObject>();
+            foreach (CartComputer vm in list.viewablecompitems)
+            {
+                list.ComputerObjs.Add(new ComputerObject().make((ComputerItem)vm, context));
+            }
 
-            ViewData["productitems"] = list; 
+            ViewData["productitems"] = list;
 
             return View();
         }
@@ -83,7 +109,7 @@ namespace part4.Controllers
         public ActionResult CompPage(ComputerItem ci)
         {
             ComputerItem c = compcontext.Computers.Where(comp => comp.id == ci.id).First();
-            ComputerObject co = new ComputerObject(c, context);
+            ComputerObject co = new ComputerObject().make(c, context);
 
             ViewData["item"] = co;
 
@@ -93,7 +119,7 @@ namespace part4.Controllers
         [HttpPost] 
         public ActionResult CompEdit(Guid id, string type, string lvl) {
             ComputerItem c = compcontext.Computers.Where(comp => comp.id == id).First();
-            ComputerObject co = new ComputerObject(c, context);
+            ComputerObject co = new ComputerObject().make(c, context);
 
             co.Newcomponent(type, lvl, context);
 
@@ -103,41 +129,55 @@ namespace part4.Controllers
         }
 
         [HttpPost] 
-        public ActionResult AddComputerToCart(string name, string price, string description, string img, string RAM, string HD, string CPU, string OS, string Display, string SoundCard) 
+        public async Task<ActionResult> AddComputerToCart(Guid id) 
         {
-            //// rebuild computer
-            //ComputerItem item = new ComputerItem(name, Double.Parse(price), description, img);
-            //item.RAM = JsonConvert.DeserializeObject<ProductItem>(RAM); 
-            //item.HD = JsonConvert.DeserializeObject<ProductItem>(HD); 
-            //item.CPU = JsonConvert.DeserializeObject<ProductItem>(CPU); 
-            //item.OS = JsonConvert.DeserializeObject<ProductItem>(OS); 
-            //item.Display = JsonConvert.DeserializeObject<ProductItem>(Display); 
-            //item.SoundCard= JsonConvert.DeserializeObject<ProductItem>(SoundCard); 
+            ComputerItem c = compcontext.Computers.Where(comp => comp.id == id).First();
+            ComputerObject co = new ComputerObject().make(c, context);
 
-            //// get selectedproductitems
-            //List<ProductItem> items = new List<ProductItem>();
-            //string itemsstring = Request.Cookies["selectedproductitems"];
-            //if (itemsstring != null)
-            //{
-            //    items = JsonConvert.DeserializeObject<List<ProductItem>>(itemsstring);
-            //}
+            // add item to cart
+            co.addCompToCart(compcartcontext); 
+            await compcartcontext.SaveChangesAsync();
 
-            //// add to cart obj
-            //items.Add(item.RAM);
-            //items.Add(item.HD);
-            //items.Add(item.CPU);
-            //items.Add(item.OS);
-            //items.Add(item.Display);
-            //items.Add(item.SoundCard);
+            // get all cart items 
+            ProductsList list = new ProductsList()
+            {
+                viewablecartitems = cartcontext.CartItems
+                                       .Select(cartitem => new cartitemforview() {
+                                           itemname = cartitem.name,
+                                           itemimage = cartitem.image,
+                                           itemdescription = cartitem.description,
+                                           itemprice = cartitem.price,
+                                       }).Distinct()
+                                       .ToList(), 
+                viewablecompitems = compcartcontext.ComputerCartItems
+                                        .Select(compcartitem => new CartComputer() {
+                                            id = compcartitem.id,
+                                            name = compcartitem.name,
+                                            image = compcartitem.image,
+                                            price = compcartitem.price,
+                                            description = compcartitem.description,
+                                            RAMid = compcartitem.RAMid,
+                                            HDid = compcartitem.HDid,
+                                            CPUid = compcartitem.CPUid,
+                                            Displayid = compcartitem.Displayid,
+                                            OSid = compcartitem.OSid,
+                                            SoundCardid = compcartitem.SoundCardid,
+                                        }).ToList(), 
+                ComputerObjs = new List<ComputerObject>()
+            };
+            // count distinct items
+            foreach (cartitemforview vm in list.viewablecartitems) {
+                vm.itemcount = cartcontext.CartItems
+                           .Where(cartitem => cartitem.name == vm.itemname)
+                           .Count();
+            }
+            // get comp objects
+            List<ComputerObject> complist = new List<ComputerObject>(); 
+            foreach (CartComputer vm in list.viewablecompitems) {
+                list.ComputerObjs.Add(new ComputerObject().make((ComputerItem) vm, context));
+            }
 
-            //// store cookie
-            //Response.Cookies.Delete("selectedproductitems");
-            //CookieOptions selectedproductitems = new CookieOptions();
-            //selectedproductitems.Expires = DateTime.Now.AddMinutes(10);
-            //Response.Cookies.Append("selectedproductitems", JsonConvert.SerializeObject(items), selectedproductitems);
-
-            //// set view data
-            //ViewData["productitems"] = items;
+            ViewData["productitems"] = list;
 
             return View();
         }

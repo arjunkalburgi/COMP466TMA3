@@ -50,20 +50,20 @@ namespace part4.Contexts
 
     }
 
-    //public class ComputerItemsContext : DbContext
-    //{
-    //    public ComputerItemsContext(DbContextOptions<ComputerItemsContext> options) : base(options)
-    //    {
-    //        Database.SetCommandTimeout(360);
-    //    }
+    public class ComputerCartItemsContext : DbContext
+    {
+        public ComputerCartItemsContext(DbContextOptions<ComputerCartItemsContext> options) : base(options)
+        {
+            Database.SetCommandTimeout(360);
+        }
 
-    //    public DbSet<ComputerItem> ComputerCartItems { get; set; }
+        public DbSet<CartComputer> ComputerCartItems { get; set; }
 
-    //    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    //    {
-    //        base.OnModelCreating(modelBuilder);
-    //    }
-    //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
+    }
 
 
 }

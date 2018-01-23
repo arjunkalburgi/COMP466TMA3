@@ -11,5 +11,7 @@ namespace part4.ViewModels
         public List<CartItem> CartItems { get; set; }
         public List<cartitemforview> viewablecartitems { get; set; }
         public List<ComputerItem> ComputerItem { get; set; }
+        public List<CartComputer> viewablecompitems { get; set; }
+        public List<ComputerObject> ComputerObjs { get; set; }
     }
 }

@@ -26,7 +26,7 @@ namespace part4
             services.AddDbContext<ProductContext>(options => options.UseMySql(connection));
             services.AddDbContext<CartItemsContext>(options => options.UseMySql(connection));
             services.AddDbContext<ComputerContext>(options => options.UseMySql(connection));
-
+            services.AddDbContext<ComputerCartItemsContext>(options => options.UseMySql(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

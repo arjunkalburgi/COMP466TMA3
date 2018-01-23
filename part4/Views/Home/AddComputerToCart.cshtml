@@ -1,21 +1,66 @@
-﻿@model part4.Models.ProductItem
+﻿@model part4.ViewModels.ProductsList
 
 @{
     ViewData["Title"] = "item.name" + " Page";
-    var items = ViewData["productitems"] as List<ProductItem>;
+    var items = ViewData["productitems"] as ProductsList;
     double price = 0.0; 
 }
 
 <div class="container row editcomponents">
     <ul class="collection with-header">
         <li class="collection-header"><h4>Your Cart Items</h4></li>
-            @foreach (var item in items) {
+            @foreach(var item in items.viewablecartitems) {
                 <li class="collection-item avatar">
+                    <img class="circle" src="@item.itemimage" />
+                    <span class="title">@item.itemname</span>
+                    <div class="chip">$@item.itemprice</div>
+                    <p>@item.itemdescription</p>
+                    @{price+=item.itemprice;}
+                </li>
+            }
+            @foreach(var item in items.ComputerObjs) {
+                <li class="collection-item computerobjs avatar">
                     <img class="circle" src="@item.image" />
                     <span class="title">@item.name</span>
                     <div class="chip">$@item.price</div>
-                    <p>@item.description.Replace("**", " ")</p>
+                    <p>@item.description</p>
                     @{price+=item.price;}
+                </li>
+                <li class="collection-item computerobjs item avatar">
+                    <img class="circle" src="@item.RAM.image" />
+                    <span class="title">@item.RAM.name</span>
+                    <div class="chip">$@item.RAM.price</div>
+                    <p>@item.RAM.description</p>
+                </li>
+                <li class="collection-item computerobjs item avatar">
+                    <img class="circle" src="@item.CPU.image" />
+                    <span class="title">@item.CPU.name</span>
+                    <div class="chip">$@item.CPU.price</div>
+                    <p>@item.CPU.description</p>
+                </li>
+                <li class="collection-item computerobjs item avatar">
+                    <img class="circle" src="@item.HD.image" />
+                    <span class="title">@item.HD.name</span>
+                    <div class="chip">$@item.HD.price</div>
+                    <p>@item.HD.description</p>
+                </li>
+                <li class="collection-item computerobjs item avatar">
+                    <img class="circle" src="@item.OS.image" />
+                    <span class="title">@item.OS.name</span>
+                    <div class="chip">$@item.OS.price</div>
+                    <p>@item.OS.description</p>
+                </li>
+                <li class="collection-item computerobjs item avatar">
+                    <img class="circle" src="@item.Display.image" />
+                    <span class="title">@item.Display.name</span>
+                    <div class="chip">$@item.Display.price</div>
+                    <p>@item.Display.description</p>
+                </li>
+                <li class="collection-item computerobjs item avatar">
+                    <img class="circle" src="@item.SoundCard.image" />
+                    <span class="title">@item.SoundCard.name</span>
+                    <div class="chip">$@item.SoundCard.price</div>
+                    <p>@item.SoundCard.description</p>
                 </li>
             }
     </ul>

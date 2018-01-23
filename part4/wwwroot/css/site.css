@@ -1,4 +1,11 @@
-﻿.productlist .gridimage {
+﻿.computerobjs:not(.item) {
+    border-bottom: none !important; }
+
+.computerobjs.item {
+    margin-left: 100px; 
+}
+
+.productlist .gridimage {
     max-width: -webkit-fill-available;
     height: 200px
 }
