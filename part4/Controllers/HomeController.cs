@@ -31,10 +31,14 @@ namespace part4.Controllers
 
         public IActionResult Index()
         {
+            if (Request.Cookies["curruser"] is null)
+            {
+                return RedirectToAction("SignIn");
+            }
+
             ViewData["ProductsList"] = new ProductsList()
             {
-                ProductItem = context.Products
-                                   .ToList()
+                ProductItem = context.Products.ToList()
             };
             ViewData["ComputersList"] = new ProductsList()
             {
@@ -55,7 +59,13 @@ namespace part4.Controllers
         [HttpPost]
         public async Task<ActionResult> AddToCart(CartItem pi)
         {
+            if (Request.Cookies["curruser"] is null)
+            {
+                return RedirectToAction("SignIn");
+            }
+
             // add item to cart
+            pi.userid = Guid.Parse(Request.Cookies["curruser"]); 
             cartcontext.CartItems.Add(pi);
             await cartcontext.SaveChangesAsync();
 
@@ -63,6 +73,7 @@ namespace part4.Controllers
             ProductsList list = new ProductsList()
             {
                 viewablecartitems = cartcontext.CartItems
+                                       .Where(i => i.userid == Guid.Parse(Request.Cookies["curruser"]))
                                        .Select(cartitem => new cartitemforview()
                                        {
                                            itemname = cartitem.name,
@@ -72,6 +83,7 @@ namespace part4.Controllers
                                        }).Distinct()
                                        .ToList(),
                 viewablecompitems = compcartcontext.ComputerCartItems
+                                        .Where(i => i.userid == Guid.Parse(Request.Cookies["curruser"]))
                                         .Select(compcartitem => new CartComputer()
                                         {
                                             id = compcartitem.id,
@@ -108,11 +120,18 @@ namespace part4.Controllers
         }
 
         [HttpPost]
-        public ActionResult CompPage(ComputerItem ci)
+        public async Task<ActionResult> CompPage(ComputerItem c)
         {
-            ComputerItem c = compcontext.Computers.Where(comp => comp.id == ci.id).First();
-            ComputerObject co = new ComputerObject().make(c, context);
+            // new ComputerItem 
+            ComputerItem ci = new ComputerItem().Makenew(c, context); 
 
+            //Save new object in the dbs
+            compcontext.Computers.Add(ci);
+            await context.SaveChangesAsync();
+            await compcontext.SaveChangesAsync(); 
+
+            // Computerobject from ComputerItem for viewing
+            ComputerObject co = new ComputerObject().make(ci, context);
             ViewData["item"] = co;
 
             return View();
@@ -133,26 +152,35 @@ namespace part4.Controllers
         [HttpPost] 
         public async Task<ActionResult> AddComputerToCart(Guid id) 
         {
+            if (Request.Cookies["curruser"] is null)
+            {
+                return RedirectToAction("SignIn");
+            }
+
             ComputerItem c = compcontext.Computers.Where(comp => comp.id == id).First();
             ComputerObject co = new ComputerObject().make(c, context);
 
             // add item to cart
-            co.addCompToCart(compcartcontext); 
+            co.addCompToCart(compcartcontext, Guid.Parse(Request.Cookies["curruser"])); 
             await compcartcontext.SaveChangesAsync();
 
             // get all cart items 
             ProductsList list = new ProductsList()
             {
                 viewablecartitems = cartcontext.CartItems
-                                       .Select(cartitem => new cartitemforview() {
+                                       .Where(i => i.userid == Guid.Parse(Request.Cookies["curruser"]))
+                                       .Select(cartitem => new cartitemforview()
+                                       {
                                            itemname = cartitem.name,
                                            itemimage = cartitem.image,
                                            itemdescription = cartitem.description,
                                            itemprice = cartitem.price,
                                        }).Distinct()
-                                       .ToList(), 
+                                       .ToList(),
                 viewablecompitems = compcartcontext.ComputerCartItems
-                                        .Select(compcartitem => new CartComputer() {
+                                        .Where(i => i.userid == Guid.Parse(Request.Cookies["curruser"]))
+                                        .Select(compcartitem => new CartComputer()
+                                        {
                                             id = compcartitem.id,
                                             name = compcartitem.name,
                                             image = compcartitem.image,
@@ -164,7 +192,7 @@ namespace part4.Controllers
                                             Displayid = compcartitem.Displayid,
                                             OSid = compcartitem.OSid,
                                             SoundCardid = compcartitem.SoundCardid,
-                                        }).ToList(), 
+                                        }).ToList(),
                 ComputerObjs = new List<ComputerObject>()
             };
             // count distinct items
@@ -244,19 +272,32 @@ namespace part4.Controllers
         [HttpPost]
         public async Task<ActionResult> computeradder(ComputerItem pi)
         {
-            //pi.id = Guid.NewGuid();
-            //pi.RAM = new ProductItem("Ram1", 9.99, "This is a first level ram", "/images/ram.jpg");
-            //context.Products.Add(pi.RAM);
-            //pi.HD = new ProductItem("HD1", 9.99, "This is a first level hd", "/images/hd.jpg");
-            //context.Products.Add(pi.HD);
-            //pi.CPU = new ProductItem("CPU1", 9.99, "This is a first level cpu", "/images/cpu.jpg");
-            //context.Products.Add(pi.CPU);
-            //pi.Display = new ProductItem("Display1", 9.99, "This is a first level monitor", "/images/display.jpg");
-            //context.Products.Add(pi.Display);
-            //pi.OS = new ProductItem("OS1", 9.99, "This is a first level os", "/images/os.png");
-            //context.Products.Add(pi.OS);
-            //pi.SoundCard = new ProductItem("SoundCard1", 9.99, "This is a first level sound card", "/images/scard.jpg");
-            //context.Products.Add(pi.SoundCard);
+            pi.id = Guid.NewGuid();
+
+            ProductItem p = new ProductItem().pi("Ram1", 9.99, "This is a first level ram", "/images/ram.jpg");
+            pi.RAMid = p.id; 
+            context.Products.Add(p);
+
+            p = new ProductItem().pi("HD1", 9.99, "This is a first level hd", "/images/hd.jpg");
+            pi.HDid = p.id; 
+            context.Products.Add(p);
+
+            p = new ProductItem().pi("CPU1", 9.99, "This is a first level cpu", "/images/cpu.jpg");
+            pi.CPUid = p.id; 
+            context.Products.Add(p);
+
+            p = new ProductItem().pi("Display1", 9.99, "This is a first level monitor", "/images/display.jpg");
+            pi.Displayid = p.id; 
+            context.Products.Add(p);
+
+            p = new ProductItem().pi("OS1", 9.99, "This is a first level os", "/images/os.png");
+            pi.OSid = p.id; 
+            context.Products.Add(p);
+
+            p = new ProductItem().pi("SoundCard1", 9.99, "This is a first level sound card", "/images/scard.jpg");
+            pi.SoundCardid = p.id; 
+            context.Products.Add(p);
+            await context.SaveChangesAsync(); 
 
             compcontext.Computers.Add(pi);
             await compcontext.SaveChangesAsync();

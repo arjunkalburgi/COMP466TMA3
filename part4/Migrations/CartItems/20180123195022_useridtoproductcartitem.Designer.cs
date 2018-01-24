@@ -8,34 +8,23 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 using part4.Contexts;
 using System;
 
-namespace part4.Migrations.ComputerCartItems
+namespace part4.Migrations.CartItems
 {
-    [DbContext(typeof(ComputerCartItemsContext))]
-    partial class ComputerCartItemsContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(CartItemsContext))]
+    [Migration("20180123195022_useridtoproductcartitem")]
+    partial class useridtoproductcartitem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn)
                 .HasAnnotation("ProductVersion", "2.0.1-rtm-125");
 
-            modelBuilder.Entity("part4.Models.CartComputer", b =>
+            modelBuilder.Entity("part4.Models.CartItem", b =>
                 {
                     b.Property<Guid>("id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<Guid>("CPUid");
-
-                    b.Property<Guid>("Displayid");
-
-                    b.Property<Guid>("HDid");
-
-                    b.Property<Guid>("OSid");
-
-                    b.Property<Guid>("RAMid");
-
-                    b.Property<Guid>("SoundCardid");
 
                     b.Property<string>("description")
                         .IsRequired()
@@ -55,7 +44,7 @@ namespace part4.Migrations.ComputerCartItems
 
                     b.HasKey("id");
 
-                    b.ToTable("cartcomps");
+                    b.ToTable("cartitems");
                 });
 #pragma warning restore 612, 618
         }

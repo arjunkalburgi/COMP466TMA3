@@ -61,7 +61,17 @@
                     <img class="gridimage" src="@product.image"/>
                     <p class="promo-caption center">@product.name</p>
                     <p class="light center">Price: $@product.price</p>
-                    <input type="hidden" name="id" value="@product.id" />
+                    <input type="hidden" name="id" value="@Guid.NewGuid()" />
+                    <input type="hidden" name="name" value="@product.name" />
+                    <input type="hidden" name="price" value="@product.price" />
+                    <input type="hidden" name="description" value="@product.description" />
+                    <input type="hidden" name="image" value="@product.image" />
+                    <input type="hidden" name="RAMid" value="@product.RAMid" />
+                    <input type="hidden" name="HDid" value="@product.HDid" />
+                    <input type="hidden" name="CPUid" value="@product.CPUid" />
+                    <input type="hidden" name="Displayid" value="@product.Displayid" />
+                    <input type="hidden" name="OSid" value="@product.OSid" />
+                    <input type="hidden" name="SoundCardid" value="@product.SoundCardid" />
                   </button>
             </form>
         }
@@ -78,7 +88,6 @@
                     <input type="hidden" name="id" value="@Guid.NewGuid()" />
                   </button>
             </form>
-
         }
     </div>
 </div>

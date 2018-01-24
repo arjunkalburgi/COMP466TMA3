@@ -36,13 +36,52 @@ namespace part4.Models
         public Guid Displayid { get; set; }
         public Guid OSid { get; set; }
         public Guid SoundCardid { get; set; }
+
+        public ComputerItem Makenew(ComputerItem c, ProductContext context)
+        {
+            this.id = c.id;
+            this.name = c.name;
+            this.image = c.image;
+            this.price = c.price;
+            this.description = c.description;
+
+            this.RAMid = Guid.NewGuid();
+            this.HDid = Guid.NewGuid();
+            this.CPUid = Guid.NewGuid();
+            this.Displayid = Guid.NewGuid();
+            this.OSid = Guid.NewGuid();
+            this.SoundCardid = Guid.NewGuid();
+
+            ProductItem RAM = new ProductItem().pifromobj(context.Products.Where(p => p.id == c.RAMid).First());
+            this.RAMid = RAM.id; 
+            context.Products.Add(RAM); 
+            ProductItem HD = new ProductItem().pifromobj(context.Products.Where(p => p.id == c.HDid).First());
+            this.HDid = HD.id; 
+            context.Products.Add(HD); 
+            ProductItem CPU = new ProductItem().pifromobj(context.Products.Where(p => p.id == c.CPUid).First());
+            this.CPUid = CPU.id; 
+            context.Products.Add(CPU); 
+            ProductItem Display = new ProductItem().pifromobj(context.Products.Where(p => p.id == c.Displayid).First());
+            this.Displayid = Display.id; 
+            context.Products.Add(Display); 
+            ProductItem OS = new ProductItem().pifromobj(context.Products.Where(p => p.id == c.OSid).First());
+            this.OSid = OS.id; 
+            context.Products.Add(OS); 
+            ProductItem SoundCard = new ProductItem().pifromobj(context.Products.Where(p => p.id == c.SoundCardid).First());
+            this.SoundCardid = SoundCard.id; 
+            context.Products.Add(SoundCard); 
+
+            return this;
+        }
     }
 
 
 
 
     [Table("cartcomps")]
-    public class CartComputer : ComputerItem { }
+    public class CartComputer : ComputerItem {
+        public Guid userid { get; set; }
+    }
 
 
 
@@ -81,6 +120,7 @@ namespace part4.Models
             this.image = c.image;
             this.price = c.price;
             this.description = c.description;
+
             this.RAM = context.Products.Where(p => p.id == c.RAMid).First();
             this.HD = context.Products.Where(p => p.id == c.HDid).First();
             this.CPU = context.Products.Where(p => p.id == c.CPUid).First();
@@ -200,7 +240,7 @@ namespace part4.Models
             return c;
         }
 
-        public void addCompToCart(ComputerCartItemsContext c)
+        public void addCompToCart(ComputerCartItemsContext c, Guid userid)
         {
             CartComputer ci = new CartComputer();
             ci.id = this.id;
@@ -214,6 +254,7 @@ namespace part4.Models
             ci.Displayid = this.Display.id;
             ci.OSid = this.OS.id;
             ci.SoundCardid = this.SoundCard.id;
+            ci.userid = userid; 
 
             c.ComputerCartItems.Add(ci);
         }

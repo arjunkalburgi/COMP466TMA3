@@ -39,6 +39,8 @@ namespace part4.Migrations.CartItems
 
                     b.Property<double>("price");
 
+                    b.Property<Guid>("userid");
+
                     b.HasKey("id");
 
                     b.ToTable("cartitems");

@@ -11,9 +11,10 @@ using System;
 namespace part4.Migrations.ComputerCartItems
 {
     [DbContext(typeof(ComputerCartItemsContext))]
-    partial class ComputerCartItemsContextModelSnapshot : ModelSnapshot
+    [Migration("20180123195406_useridtocompcartitem")]
+    partial class useridtocompcartitem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,4 +1,10 @@
 ﻿using System;
+using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using part4.Contexts;
+using System.Linq;
+
 namespace part4.Models
 {
 

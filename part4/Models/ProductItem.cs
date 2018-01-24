@@ -48,13 +48,25 @@ namespace part4.Models
             return this; 
         }
 
+        public ProductItem pifromobj(ProductItem pi) {
+            this.id = Guid.NewGuid();
+            this.name = pi.name;
+            this.price = pi.price;
+            this.description = pi.description;
+            this.image = pi.image;
+
+            return this; 
+        }
+
     }
 
 
 
 
     [Table("cartitems")]
-    public class CartItem : ProductItem {}
+    public class CartItem : ProductItem {
+        public Guid userid { get; set; }
+    }
 
 
 
