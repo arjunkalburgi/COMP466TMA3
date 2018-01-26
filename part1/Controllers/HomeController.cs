@@ -33,7 +33,7 @@ namespace part1.Controllers
             }
             ViewData["Count"] = countnumber;
 
-            // ipaddy 
+            // ipaddy, source: https://stackoverflow.com/questions/28664686/how-do-i-get-client-ip-address-in-asp-net-core
             ViewData["IP"] = Request.HttpContext.Connection.LocalIpAddress; 
 
             return View();

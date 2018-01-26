@@ -45,14 +45,45 @@
         </div>
     </nav>
    
-    @RenderBody()
-    <div class="container body-content">
+    <div class="main">@RenderBody()</div>
         
-        <hr />
-        <footer>
-            <p>&copy; 2018 - part2</p>
-        </footer>
-    </div>
+    <footer class="page-footer orange">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Your computer store</h5>
+                    <h4 class="white-text">
+                        <i class="material-icons">flash_on</i>
+                        <i class="material-icons">flash_on</i>
+                        <i class="material-icons">flash_on</i>
+                        <i class="material-icons">flash_on</i>
+                        <i class="material-icons">flash_on</i>
+                        <i class="material-icons">flash_on</i>
+                    </h4>
+
+
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li><a class="white-text" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                        <li><a class="white-text" asp-area="" asp-controller="Home" asp-action="About">Feedback</a></li>
+                    </ul>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Add more stock</h5>
+                    <ul>
+                        <li><a class="white-text" asp-area="" asp-controller="Home" asp-action="Indexcopy">Indexcopy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Made by <a class="orange-text text-lighten-3" href="http://www.arjunkalburgi.com">Arjun</a>
+            </div>
+        </div>
+    </footer>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>

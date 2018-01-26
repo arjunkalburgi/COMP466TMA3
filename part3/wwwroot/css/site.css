@@ -1,4 +1,14 @@
-﻿.productlist .gridimage {
+﻿body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column
+}
+
+.main {
+    flex: 1 0 auto
+}
+
+.productlist .gridimage {
     max-width: -webkit-fill-available;
     height: 200px
 }
