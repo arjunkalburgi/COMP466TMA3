@@ -21,8 +21,14 @@ namespace part4
         {
             services.AddMvc();
 
+            // var connection = @"server={{servername}};userid={{username}};password={{password}};database={{dbname}};";"
+
+            //localsetup
             var connection = @"server=localhost;userid=root;password=password;database=store;";
-            //var connection = @"User ID=postgres;Password=postgres;Host=192.168.99.100;Port=5432;Database=store;";
+
+            // azure setup (didn't work)
+            //var connection = @"Server=tcp:466sdotore.database.windows.net,1433;Initial Catalog=store;Persist Security Info=False;User ID=arjun;Password=Passwor6;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+
             services.AddDbContext<ProductContext>(options => options.UseMySql(connection));
             services.AddDbContext<CartItemsContext>(options => options.UseMySql(connection));
             services.AddDbContext<ComputerContext>(options => options.UseMySql(connection));

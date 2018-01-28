@@ -247,7 +247,7 @@ namespace part4.Controllers
                 if (u.password != password) {
                     return RedirectToAction("SignIn");
                 }
-            } catch (InvalidOperationException e) {
+            } catch (Exception e) {
                 Console.WriteLine(e); 
                 u = new user().Make(name, password);
                 ucontext.Users.Add(u);

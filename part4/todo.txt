@@ -1,2 +1,0 @@
-﻿replace functions in homecontroller 
-fix some stuff in design heh

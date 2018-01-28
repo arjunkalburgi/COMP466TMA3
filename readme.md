@@ -67,6 +67,8 @@ The database design mirrors the models found in the part4/Models folder. They're
 ### DATABASE SET UP
 In the Startup.cs file, line 25 contains the connection information passed to the application. The line above (24) has the information of how to modify it for your use. Note, this application uses mysql. To change to Postgres or another db, modify the "useMySql" in lines 27-31 to the db type of your choice. See [here](https://docs.microsoft.com/en-us/ef/core/api/microsoft.entityframeworkcore.dbcontextoptionsbuilder) for a more comprehensive list of options. 
 
+Also note that the Azure connection string is commented out. This is because I couldn't get it working online. It only worked locally. 
+
 ### APPLICATION INTERFACE AND STRUCTURE 
 Same as Part 3.
 
